@@ -167,15 +167,16 @@ section.block{margin:0 0 34px}
 }
 .tile:hover{transform:translateY(-2px)}
 .tile .lab{font-size:13px;letter-spacing:.06em;color:var(--muted)}
-.tile .val{font-family:'Fraunces',Georgia,serif;font-size:26px;line-height:1.1}
+.tile .val{font-family:'Fraunces',Georgia,serif;font-size:clamp(21px,6vw,26px);line-height:1.1;overflow-wrap:anywhere}
 .tile .val small{font-size:13px;color:var(--muted);font-family:'Jost',sans-serif}
 .tile .sub{font-size:12.5px;color:var(--muted);margin-top:auto}
 .tile.done{background:linear-gradient(180deg,var(--paper),var(--leaf))}
 
-.stat{display:flex;gap:22px;flex-wrap:wrap;margin:0 0 4px}
-.stat div{min-width:76px}
-.stat b{display:block;font-family:'Fraunces',Georgia,serif;font-size:24px;font-weight:400}
-.stat span{font-size:12px;color:var(--muted);letter-spacing:.05em}
+.stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(92px,1fr));gap:16px 14px;margin:0 0 4px}
+.stat div{min-width:0}
+.stat b{display:block;font-family:'Fraunces',Georgia,serif;font-size:clamp(19px,5.4vw,24px);
+  font-weight:400;line-height:1.15;overflow-wrap:anywhere}
+.stat span{display:block;font-size:11.5px;color:var(--muted);letter-spacing:.05em;line-height:1.35;margin-top:2px}
 
 /* ---------- fields ---------- */
 label.f{display:block;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
@@ -187,7 +188,7 @@ input:focus,select:focus,textarea:focus{background:var(--paper);border-color:var
 textarea{resize:vertical;min-height:96px;line-height:1.7}
 textarea.big{min-height:210px}
 .row{display:flex;gap:10px;flex-wrap:wrap}
-.row>*{flex:1 1 130px}
+.row>*{flex:1 1 130px;min-width:0}
 .mb{margin-bottom:14px}
 
 .btn{
@@ -239,7 +240,7 @@ textarea.big{min-height:210px}
   display:flex;gap:14px;align-items:flex-start;
 }
 .list li:first-child{border-top:none}
-.list .when{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);flex:0 0 78px;padding-top:3px}
+.list .when{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);flex:0 0 70px;padding-top:3px;overflow-wrap:anywhere}
 .list .body{flex:1;min-width:0}
 .list .body h4{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:17px;margin:0 0 3px}
 .list .body p{margin:0;color:var(--muted);font-size:14.5px;white-space:pre-wrap;overflow-wrap:anywhere}
@@ -283,17 +284,32 @@ textarea.big{min-height:210px}
 .flow .track{flex:1;display:flex;flex-direction:column;gap:4px}
 .flow .b{height:9px;border-radius:99px;background:var(--sage);min-width:2px}
 .flow .b.out{background:var(--mid)}
-.flow .amt{flex:0 0 auto;font-size:12px;color:var(--muted);text-align:right}
+.flow .amt{flex:0 0 auto;font-size:11.5px;color:var(--muted);text-align:right;line-height:1.4}
 .inout{display:flex;gap:8px;margin-bottom:14px}
 .inout button{flex:1;padding:11px;border-radius:12px;border:1px solid var(--line);background:var(--paper);color:var(--muted);font-size:14.5px}
 .inout button.on{background:var(--leaf);border-color:var(--leaf);color:var(--ink)}
 .inout button.on.out{background:var(--petal);border-color:var(--petal)}
 .amtin{font-family:'Fraunces',Georgia,serif;font-size:22px}
 .pot{margin-top:12px}
-.pot .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.pot .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
 .pot h4{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:18px;margin:0}
 .pot .fig{font-size:13.5px;color:var(--muted);white-space:nowrap}
 .sadaqah{color:var(--gold)}
+
+/* ---------- lock ---------- */
+#lock{display:none;position:fixed;inset:0;z-index:200;background:var(--shell);
+  align-items:center;justify-content:center;padding:24px}
+#lock.on{display:flex}
+body.locked{overflow:hidden}
+.lockcard{width:100%;max-width:330px;text-align:center}
+.lockcard .ar{font-family:'Amiri',serif;font-size:30px;color:var(--gold);line-height:1.9}
+.lockcard h1{font-family:'Fraunces',Georgia,serif;font-weight:300;font-size:30px;
+  letter-spacing:.24em;text-indent:.24em;margin:6px 0 4px}
+.lockcard input{text-align:center;margin:22px 0 12px;letter-spacing:.08em}
+.lockcard .btn{width:100%}
+.lockcard .note{min-height:22px;margin-top:14px}
+.shake{animation:shake .4s}
+@keyframes shake{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 
 /* ---------- theme picker ---------- */
 .themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:12px}
@@ -341,7 +357,7 @@ textarea.big{min-height:210px}
 .bookgrid img{width:100%;border-radius:12px;display:block}
 .bookgrid figcaption{font-size:11px;color:var(--muted);margin-top:4px;letter-spacing:.05em}
 .numbers{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:18px;margin-top:18px}
-.numbers b{display:block;font-family:'Fraunces',Georgia,serif;font-size:28px;font-weight:400;line-height:1.1}
+.numbers b{display:block;font-family:'Fraunces',Georgia,serif;font-size:clamp(22px,6vw,28px);font-weight:400;line-height:1.1;overflow-wrap:anywhere}
 .numbers span{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 @media print{
   body>*{display:none !important}
@@ -882,6 +898,21 @@ footer .ar{font-family:'Amiri',serif;color:var(--gold);font-size:17px}
     </section>
 
     <section class="block">
+      <p class="eyebrow">🔒 Lock</p>
+      <div class="card">
+        <p class="note mb" id="lockState">—</p>
+        <div class="mb"><label class="f" for="newPin">New phrase</label>
+          <input type="text" id="newPin" placeholder="type a new phrase" autocapitalize="off"></div>
+        <div class="row">
+          <button class="btn" style="flex:0 0 auto" onclick="setPin()">Save phrase</button>
+          <button class="btn soft" style="flex:0 0 auto" onclick="lockNow()">Lock now</button>
+          <button class="btn quiet" style="flex:0 0 auto" onclick="removePin()">Remove lock</button>
+        </div>
+        <p class="note" style="margin-top:14px">This keeps other eyes out of your journal. It isn't encryption — someone determined, with your unlocked phone and the right know-how, could still get at the file.</p>
+      </div>
+    </section>
+
+    <section class="block">
       <p class="eyebrow">📖 The book</p>
       <div class="card">
         <p class="note mb">Everything you've written and photographed, laid out as one document. Meant for 31 December — but you can look any time.</p>
@@ -909,6 +940,17 @@ footer .ar{font-family:'Amiri',serif;color:var(--gold);font-size:17px}
     <div style="margin-top:6px">BECOMING · 2026</div>
   </footer>
 </main>
+
+<div id="lock">
+  <div class="lockcard">
+    <div class="ar">بِسْمِ اللهِ</div>
+    <h1>BECOMING</h1>
+    <p class="note">This one's just yours.</p>
+    <input type="password" id="lockPin" placeholder="Your phrase" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <button class="btn" onclick="tryUnlock()">Open</button>
+    <p class="note" id="lockMsg"></p>
+  </div>
+</div>
 
 <div id="book">
   <div class="bookbar">
@@ -939,7 +981,7 @@ const KEY='becoming.v1';
 let memoryOnly=false, mem=null;
 
 function blank(){
-  return {profile:{name:'',start:'2026-09-01',startWeight:null,goalWeight:null,wake:'05:30',sleep:'22:30',water:8,istighfar:10000,why:'',cur:'₦'},
+  return {profile:{name:'',start:'2026-09-01',startWeight:null,goalWeight:null,wake:'05:30',sleep:'22:30',water:8,istighfar:10000,why:'',cur:'₦',lock:hash('Guided by Allah')},
     days:{},weights:[],measures:[],workouts:[],skin:[],goals:[],learning:[],journal:[],joys:[],recipes:[],duas:[],money:[],pots:[],months:[],letter:{text:'',sealed:false,date:'',opened:false},
     photos:{body:[],skin:[]}};
 }
@@ -1590,7 +1632,7 @@ function renderDeen(){
 const PROMPTS=['What am I feeling today?','What am I proud of?','What was difficult?','What did I learn?',
   'What am I grateful for?','What do I need to let go of?','What would the woman I\'m becoming do?',
   'What do I want tomorrow to look like?'];
-const MOODS=['😄','😊','😐','😔','😭','😴'];
+const MOODS=['😄','😂','😊','😐','😔','😭','😴','❤️','💔'];
 let mood='', promptIx=Math.floor(Math.random()*PROMPTS.length);
 function rollPrompt(){promptIx=(promptIx+1)%PROMPTS.length;$('prompt').textContent=PROMPTS[promptIx];}
 function renderJournal(){
@@ -1641,6 +1683,41 @@ function renderJoys(){
 }
 
 /* ============================================================
+   LOCK
+   ============================================================ */
+function hash(s){
+  let x=5381; s=String(s).trim().toLowerCase().replace(/\s+/g,' ');
+  for(let i=0;i<s.length;i++) x=((x<<5)+x+s.charCodeAt(i))>>>0;
+  return 'b'+x.toString(36);
+}
+function showLock(){
+  $('lock').classList.add('on');document.body.classList.add('locked');
+  $('lockPin').value='';$('lockMsg').textContent='';
+  setTimeout(()=>$('lockPin').focus(),120);
+}
+function tryUnlock(){
+  if(hash($('lockPin').value)===S.profile.lock){
+    $('lock').classList.remove('on');document.body.classList.remove('locked');
+  } else {
+    $('lockMsg').textContent='Not quite. Try again.';
+    $('lock').querySelector('.lockcard').classList.add('shake');
+    setTimeout(()=>$('lock').querySelector('.lockcard').classList.remove('shake'),420);
+    $('lockPin').select();
+  }
+}
+function setPin(){
+  const v=$('newPin').value.trim();
+  if(v.length<3){toast('Make it at least three characters.');return;}
+  S.profile.lock=hash(v);commit();$('newPin').value='';renderSettings();
+  toast('Phrase saved. Remember it — there is no reset.');
+}
+function lockNow(){showLock();}
+function removePin(){
+  if(!confirm('Open without a phrase from now on?'))return;
+  S.profile.lock='';commit();renderSettings();toast('Lock removed.');
+}
+
+/* ============================================================
    THEMES
    ============================================================ */
 const THEMES=[
@@ -1671,6 +1748,9 @@ function renderThemes(){
    ============================================================ */
 function renderSettings(){
   renderThemes();
+  $('lockState').textContent = S.profile.lock
+    ? 'Locked. You are asked for your phrase each time this opens.'
+    : 'No lock. Anyone who opens this page sees everything.';
   const p=S.profile;
   const set=(id,v)=>{const e=$(id);if(e!==document.activeElement)e.value=v??'';};
   set('pName',p.name);set('pStart',p.start);set('pSW',p.startWeight);set('pGW',p.goalWeight);
@@ -1898,6 +1978,7 @@ function bindText(id,get,set){
 }
 function setup(){
   applyTheme();
+  if(S.profile.lock)showLock();
   buildNav();
   ['wDate','mDate','kDate','bpDate','spDate','lDate','jDate','joyDate','rDate','fDate'].forEach(i=>{if($(i))$(i).value=TODAY;});
 
@@ -1917,6 +1998,8 @@ function setup(){
   if(memoryOnly){
     $('storeWarn').innerHTML='<div class="banner">This preview can\'t save to the browser. Download the file and open it from your device — then everything sticks.</div>';
   }
+  $('lockPin').addEventListener('keydown',e=>{if(e.key==='Enter')tryUnlock();});
+
   const h=location.hash.replace('#','');
   go(VIEWS.some(v=>v[0]===h)?h:'today');
 }
