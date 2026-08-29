@@ -1,0 +1,1940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F7F1F1">
+<title>BECOMING</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&family=Jost:wght@300;400;500&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ---------- tokens ---------- */
+:root{
+  --shell:#F7F1F1;        /* soft warm blush-grey, the page itself */
+  --paper:#FFFCFB;        /* cards */
+  --ink:#3B2E33;          /* deep aubergine, all text */
+  --muted:#8E7C82;        /* secondary text */
+  --line:#EADFDF;         /* hairlines */
+  --rose:#B87C8C;         /* primary — self, journal, joys */
+  --petal:#EDD9DC;        /* rose, softened */
+  --sage:#8FA88C;         /* growth — habits, body, career */
+  --leaf:#DCE6D9;
+  --gold:#BC9C54;         /* the sacred thread — deen, bismillah */
+  --sand:#F0E6D2;
+  --mid:#D9AAB2;          /* half-full day on the ribbon */
+  --danger:#A05461;
+  --shadow:0 1px 2px rgba(59,46,51,.04), 0 8px 24px -12px rgba(59,46,51,.14);
+  --r:18px;
+  --pad:clamp(16px,4vw,26px);
+}
+/* ---------- other palettes ---------- */
+[data-theme="mocha"]{
+  --shell:#F5EFE7;--paper:#FFFCF7;--ink:#38291F;--muted:#8A7462;--line:#E8DCCC;
+  --rose:#9C6B45;--petal:#EBDBC7;--sage:#87895F;--leaf:#E4E3CE;--gold:#B98B4A;--sand:#F1E4CE;
+  --mid:#C79A73;--danger:#9C5A4A;
+}
+[data-theme="olive"]{
+  --shell:#F2EFE6;--paper:#FDFBF5;--ink:#32372B;--muted:#7B8070;--line:#E1DECE;
+  --rose:#6B7A50;--petal:#E0E5D2;--sage:#9FAF7F;--leaf:#E5EAD9;--gold:#BC9C54;--sand:#EFE7D2;
+  --mid:#9FAF7F;--danger:#9A5B4A;
+}
+[data-theme="nile"]{
+  --shell:#EEF3F1;--paper:#FBFEFD;--ink:#22383A;--muted:#6D8788;--line:#D9E5E2;
+  --rose:#2F6B6A;--petal:#D4E5E1;--sage:#7FA68C;--leaf:#DCEAE0;--gold:#B08D45;--sand:#F0E8D6;
+  --mid:#6C9A97;--danger:#A05461;
+}
+[data-theme="blue"]{
+  --shell:#EFF2F8;--paper:#FCFDFF;--ink:#26314B;--muted:#77839C;--line:#DCE2EE;
+  --rose:#5A76A8;--petal:#DBE3F2;--sage:#7FA095;--leaf:#DDE9E4;--gold:#AC8B4C;--sand:#EFE7D4;
+  --mid:#93A9CC;--danger:#A05461;
+}
+[data-theme="cocoa"]{
+  --shell:#241C18;--paper:#2F2621;--ink:#F0E6DC;--muted:#AE9A88;--line:#3E332C;
+  --rose:#D8A87E;--petal:#45352A;--sage:#A3B08A;--leaf:#38402F;--gold:#D9B36A;--sand:#403422;
+  --mid:#B08560;--danger:#E39A96;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px -14px rgba(0,0,0,.7);
+}
+[data-theme="cocoa"] .shot .cap{background:linear-gradient(transparent,rgba(0,0,0,.7))}
+
+[data-theme="night"]{
+  --shell:#1F1A21;--paper:#2A2430;--ink:#EFE6EA;--muted:#A091A0;--line:#3A3140;
+  --rose:#D3A0B0;--petal:#453849;--sage:#9BB59A;--leaf:#33403A;--gold:#D6B368;--sand:#3D3428;
+  --mid:#A8788C;--danger:#E08A96;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px -14px rgba(0,0,0,.7);
+}
+[data-theme="night"] .shot .cap{background:linear-gradient(transparent,rgba(0,0,0,.7))}
+
+/* the book always prints on white */
+@media print{
+  :root,[data-theme]{--shell:#fff;--paper:#fff;--ink:#242024;--muted:#6B6168;--line:#DDD6D8;--shadow:none}
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--shell);
+  color:var(--ink);
+  font-family:'Jost',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-weight:300;
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:64px;
+}
+h1,h2,h3{font-family:'Fraunces','Iowan Old Style',Georgia,serif;font-weight:400;margin:0;letter-spacing:-.01em}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:none}
+a{color:var(--rose)}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px;border-radius:6px}
+
+.wrap{max-width:760px;margin:0 auto;padding:0 var(--pad)}
+
+/* ---------- masthead ---------- */
+.mast{padding:34px 0 10px;text-align:center}
+.mast h1{
+  font-size:clamp(30px,8vw,46px);
+  letter-spacing:.26em;
+  text-indent:.26em;
+  font-weight:300;
+}
+.mast .tag{color:var(--muted);font-size:14.5px;letter-spacing:.04em;margin-top:6px}
+
+/* ---------- nav ---------- */
+nav{
+  position:sticky;top:0;z-index:30;
+  background:color-mix(in srgb, var(--shell) 88%, transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  margin-top:14px;
+}
+.navrow{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:9px 0}
+.navrow::-webkit-scrollbar{display:none}
+.navrow button{
+  white-space:nowrap;padding:7px 13px;border-radius:999px;
+  font-size:14px;color:var(--muted);letter-spacing:.02em;
+  transition:background .18s ease,color .18s ease;
+}
+.navrow button:hover{color:var(--ink)}
+.navrow button[aria-current="page"]{background:var(--paper);color:var(--ink);box-shadow:var(--shadow)}
+
+/* ---------- views ---------- */
+.view{display:none;padding:22px 0 40px}
+.view.on{display:block;animation:rise .42s cubic-bezier(.22,.7,.3,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+
+.eyebrow{
+  font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 12px;display:flex;align-items:center;gap:10px;
+}
+.eyebrow::after{content:"";flex:1;height:1px;background:var(--line)}
+section.block{margin:0 0 34px}
+
+/* ---------- bismillah ---------- */
+.bism{
+  text-align:center;padding:26px 0 6px;
+  animation:breathe 1.6s ease both;
+}
+@keyframes breathe{from{opacity:0;letter-spacing:.06em}to{opacity:1;letter-spacing:0}}
+.bism .ar{
+  font-family:'Amiri',serif;font-size:clamp(26px,7vw,34px);
+  color:var(--gold);line-height:1.9;direction:rtl;
+}
+.bism .en{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.rule{display:flex;align-items:center;justify-content:center;gap:10px;margin:16px 0 0}
+.rule i{display:block;width:56px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.rule i+i{background:linear-gradient(90deg,var(--gold),transparent)}
+.rule span{color:var(--gold);font-size:9px}
+
+/* ---------- ribbon (signature) ---------- */
+.ribbon{background:var(--paper);border-radius:var(--r);padding:18px var(--pad);box-shadow:var(--shadow);margin-top:22px}
+.ribbon .meta{display:flex;justify-content:space-between;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.dots{display:flex;flex-wrap:wrap;gap:3.5px}
+.dot{width:7px;height:7px;border-radius:50%;background:transparent;border:1px solid var(--line)}
+.dot.l1{background:var(--petal);border-color:var(--petal)}
+.dot.l2{background:var(--mid);border-color:var(--mid)}
+.dot.l3{background:var(--rose);border-color:var(--rose)}
+.dot.today{box-shadow:0 0 0 2.5px var(--shell),0 0 0 3.5px var(--rose)}
+.ribbon .legend{font-size:12px;color:var(--muted);margin-top:12px}
+
+/* ---------- cards ---------- */
+.card{background:var(--paper);border-radius:var(--r);padding:var(--pad);box-shadow:var(--shadow)}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.tile{
+  background:var(--paper);border-radius:var(--r);padding:16px;box-shadow:var(--shadow);
+  display:flex;flex-direction:column;gap:8px;min-height:118px;text-align:left;width:100%;
+  transition:transform .2s ease;
+}
+.tile:hover{transform:translateY(-2px)}
+.tile .lab{font-size:13px;letter-spacing:.06em;color:var(--muted)}
+.tile .val{font-family:'Fraunces',Georgia,serif;font-size:26px;line-height:1.1}
+.tile .val small{font-size:13px;color:var(--muted);font-family:'Jost',sans-serif}
+.tile .sub{font-size:12.5px;color:var(--muted);margin-top:auto}
+.tile.done{background:linear-gradient(180deg,var(--paper),var(--leaf))}
+
+.stat{display:flex;gap:22px;flex-wrap:wrap;margin:0 0 4px}
+.stat div{min-width:76px}
+.stat b{display:block;font-family:'Fraunces',Georgia,serif;font-size:24px;font-weight:400}
+.stat span{font-size:12px;color:var(--muted);letter-spacing:.05em}
+
+/* ---------- fields ---------- */
+label.f{display:block;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+input[type=text],input[type=number],input[type=date],input[type=time],select,textarea{
+  width:100%;background:var(--shell);border:1px solid var(--line);border-radius:12px;
+  padding:11px 13px;font-weight:300;transition:border-color .18s ease,background .18s ease;
+}
+input:focus,select:focus,textarea:focus{background:var(--paper);border-color:var(--rose);outline:none}
+textarea{resize:vertical;min-height:96px;line-height:1.7}
+textarea.big{min-height:210px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row>*{flex:1 1 130px}
+.mb{margin-bottom:14px}
+
+.btn{
+  background:var(--ink);color:var(--paper);border-radius:999px;padding:10px 20px;
+  font-size:14px;letter-spacing:.04em;transition:opacity .18s ease;
+}
+.btn:hover{opacity:.86}
+.btn.soft{background:var(--paper);color:var(--ink);box-shadow:var(--shadow)}
+.btn.quiet{background:transparent;color:var(--muted);padding:8px 0;font-size:13px}
+.btn.quiet:hover{color:var(--rose)}
+.btn.warn{background:var(--paper);color:var(--danger);box-shadow:var(--shadow)}
+
+/* ---------- checks ---------- */
+.checks{display:flex;flex-wrap:wrap;gap:8px}
+.chk{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 15px;border-radius:999px;border:1px solid var(--line);
+  background:var(--paper);font-size:14.5px;color:var(--muted);
+  transition:all .2s ease;
+}
+.chk i{width:7px;height:7px;border-radius:50%;background:var(--line);font-style:normal;transition:all .2s ease}
+.chk.on{color:var(--ink);border-color:var(--leaf);background:var(--leaf)}
+.chk.on i{background:var(--sage);box-shadow:0 0 0 3px var(--leaf)}
+.chk.gold.on{background:var(--sand);border-color:var(--sand)}
+.chk.gold.on i{background:var(--gold);box-shadow:0 0 0 3px var(--sand)}
+.chk.auto{opacity:.95}
+.chk .aut{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);opacity:.75}
+
+/* ---------- counter / rings ---------- */
+.counter{display:flex;align-items:center;gap:14px}
+.counter button{
+  width:38px;height:38px;border-radius:50%;background:var(--shell);
+  font-size:19px;line-height:1;color:var(--ink);border:1px solid var(--line);
+}
+.counter button:hover{background:var(--petal);border-color:var(--petal)}
+.ring{display:block}
+.ring circle{fill:none;stroke-width:5;stroke-linecap:round}
+.ring .bg{stroke:var(--line)}
+.ring .fg{stroke:var(--rose);transition:stroke-dashoffset .5s cubic-bezier(.22,.7,.3,1)}
+
+.bar{height:7px;border-radius:99px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;background:var(--sage);transition:width .5s cubic-bezier(.22,.7,.3,1)}
+.bar.rose i{background:var(--rose)}
+
+/* ---------- lists ---------- */
+.list{list-style:none;margin:14px 0 0;padding:0}
+.list li{
+  padding:14px 0;border-top:1px solid var(--line);
+  display:flex;gap:14px;align-items:flex-start;
+}
+.list li:first-child{border-top:none}
+.list .when{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);flex:0 0 78px;padding-top:3px}
+.list .body{flex:1;min-width:0}
+.list .body h4{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:17px;margin:0 0 3px}
+.list .body p{margin:0;color:var(--muted);font-size:14.5px;white-space:pre-wrap;overflow-wrap:anywhere}
+.x{color:var(--line);font-size:17px;line-height:1;padding:3px 4px}
+.x:hover{color:var(--rose)}
+.empty{color:var(--muted);font-size:14.5px;font-style:italic;padding:8px 0}
+
+.mono{font-variant-numeric:tabular-nums}
+.note{font-size:13px;color:var(--muted);line-height:1.65}
+.serifline{font-family:'Fraunces',Georgia,serif;font-size:19px;line-height:1.55}
+
+/* ---------- photos ---------- */
+.shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px;margin-top:14px}
+.shot{position:relative;border-radius:14px;overflow:hidden;background:var(--petal);aspect-ratio:3/4;box-shadow:var(--shadow)}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.shot .cap{
+  position:absolute;left:0;right:0;bottom:0;padding:16px 8px 6px;
+  background:linear-gradient(transparent,rgba(59,46,51,.62));
+  color:#fff;font-size:11px;letter-spacing:.06em;
+}
+.shot .del{position:absolute;top:5px;right:5px;background:var(--paper);border-radius:50%;width:22px;height:22px;font-size:13px;line-height:1;color:var(--ink)}
+.shot.sel{outline:2px solid var(--rose);outline-offset:-2px}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.compare figure{margin:0}
+.compare img{width:100%;border-radius:14px;display:block}
+.compare figcaption{font-size:12px;color:var(--muted);text-align:center;margin-top:6px;letter-spacing:.06em}
+.upl{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);cursor:pointer}
+.upl input{display:none}
+
+/* ---------- misc ---------- */
+.moods{display:flex;gap:8px;flex-wrap:wrap}
+.mood{font-size:22px;width:46px;height:46px;border-radius:50%;background:var(--shell);border:1px solid var(--line);line-height:1}
+.mood.on{background:var(--petal);border-color:var(--rose);transform:scale(1.06)}
+.scale{display:flex;align-items:center;gap:12px}
+.scale input[type=range]{flex:1;accent-color:var(--rose)}
+.scale b{font-family:'Fraunces',Georgia,serif;font-weight:400;width:26px;text-align:right}
+
+/* ---------- money ---------- */
+.flow{display:flex;align-items:center;gap:10px;margin-top:10px}
+.flow .mlab{flex:0 0 46px;font-size:12px;letter-spacing:.06em;color:var(--muted)}
+.flow .track{flex:1;display:flex;flex-direction:column;gap:4px}
+.flow .b{height:9px;border-radius:99px;background:var(--sage);min-width:2px}
+.flow .b.out{background:var(--mid)}
+.flow .amt{flex:0 0 auto;font-size:12px;color:var(--muted);text-align:right}
+.inout{display:flex;gap:8px;margin-bottom:14px}
+.inout button{flex:1;padding:11px;border-radius:12px;border:1px solid var(--line);background:var(--paper);color:var(--muted);font-size:14.5px}
+.inout button.on{background:var(--leaf);border-color:var(--leaf);color:var(--ink)}
+.inout button.on.out{background:var(--petal);border-color:var(--petal)}
+.amtin{font-family:'Fraunces',Georgia,serif;font-size:22px}
+.pot{margin-top:12px}
+.pot .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.pot h4{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:18px;margin:0}
+.pot .fig{font-size:13.5px;color:var(--muted);white-space:nowrap}
+.sadaqah{color:var(--gold)}
+
+/* ---------- theme picker ---------- */
+.themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:12px}
+.swatch{border:1px solid var(--line);border-radius:14px;padding:12px;text-align:left;background:var(--paper);transition:border-color .2s ease}
+.swatch:hover{border-color:var(--muted)}
+.swatch.on{border-color:var(--rose);box-shadow:0 0 0 1px var(--rose)}
+.swatch .strip{display:flex;height:26px;border-radius:8px;overflow:hidden;margin-bottom:9px}
+.swatch .strip i{flex:1}
+.swatch .nm{font-size:13.5px}
+.swatch .cur{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- sealed letter ---------- */
+.seal{
+  text-align:center;padding:34px 22px;border-radius:var(--r);
+  background:linear-gradient(160deg,var(--sand),var(--paper));
+  border:1px solid var(--sand);
+}
+.seal .wax{font-size:34px;line-height:1}
+.seal h3{font-size:21px;margin:10px 0 4px}
+.why{background:var(--paper);border-radius:var(--r);padding:var(--pad);box-shadow:var(--shadow);margin-top:14px;border-left:3px solid var(--rose)}
+.why .lab{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.nudge{background:var(--leaf);border-radius:var(--r);padding:16px var(--pad);margin-top:14px;display:flex;
+  justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.answered{opacity:.9}
+.answered .body p{text-decoration:none}
+.badge{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border:1px solid var(--sand);
+  background:var(--sand);border-radius:999px;padding:2px 9px;margin-left:8px;white-space:nowrap}
+
+/* ---------- the book ---------- */
+#book{display:none}
+#book.on{display:block;position:fixed;inset:0;z-index:90;background:var(--shell);overflow:auto}
+.bookbar{position:sticky;top:0;background:var(--shell);border-bottom:1px solid var(--line);
+  padding:12px var(--pad);display:flex;gap:10px;justify-content:flex-end;z-index:2}
+.bookpage{max-width:720px;margin:0 auto;padding:0 var(--pad) 70px}
+.bookcover{text-align:center;padding:70px 0 46px;border-bottom:1px solid var(--line)}
+.bookcover h1{font-size:clamp(32px,9vw,52px);letter-spacing:.24em;text-indent:.24em;font-weight:300}
+.bookcover .ar{font-family:'Amiri',serif;color:var(--gold);font-size:27px;margin-bottom:22px}
+.bookpage h2{font-size:24px;margin:44px 0 6px}
+.bookpage h2+.note{margin-top:0}
+.bookpage .entry{border-top:1px solid var(--line);padding:18px 0}
+.bookpage .entry .when{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.bookpage .entry p{white-space:pre-wrap;margin:6px 0 0}
+.bookgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-top:14px}
+.bookgrid figure{margin:0}
+.bookgrid img{width:100%;border-radius:12px;display:block}
+.bookgrid figcaption{font-size:11px;color:var(--muted);margin-top:4px;letter-spacing:.05em}
+.numbers{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:18px;margin-top:18px}
+.numbers b{display:block;font-family:'Fraunces',Georgia,serif;font-size:28px;font-weight:400;line-height:1.1}
+.numbers span{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+@media print{
+  body>*{display:none !important}
+  #book.on{display:block !important;position:static;overflow:visible;background:#fff}
+  .bookbar{display:none !important}
+  .bookpage{max-width:none;padding:0}
+  .bookpage h2{break-after:avoid}
+  .entry,.bookgrid figure{break-inside:avoid}
+}
+
+/* ---------- recipes ---------- */
+.recipes{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin-top:16px}
+.rcard{background:var(--paper);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);position:relative}
+.rcard .ph{aspect-ratio:4/3;background:var(--sand);display:block;width:100%;object-fit:cover}
+.rcard .no{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:var(--sand);font-size:26px}
+.rcard .txt{padding:12px 14px 14px}
+.rcard h4{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:17px;margin:0 0 3px;line-height:1.3}
+.rcard p{margin:0;font-size:13.5px;color:var(--muted);white-space:pre-wrap;overflow-wrap:anywhere}
+.rcard .when{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:8px;display:block}
+.rcard .again{display:inline-block;margin-top:8px;font-size:11.5px;letter-spacing:.06em;color:var(--sage);border:1px solid var(--leaf);background:var(--leaf);border-radius:999px;padding:2px 10px}
+.rcard .del{position:absolute;top:7px;right:7px;background:var(--paper);border-radius:50%;width:24px;height:24px;font-size:13px;line-height:1;color:var(--ink);box-shadow:var(--shadow)}
+
+.toast{
+  position:fixed;left:50%;bottom:26px;transform:translate(-50%,14px);
+  background:var(--ink);color:var(--paper);padding:9px 20px;border-radius:999px;
+  font-size:13.5px;letter-spacing:.03em;opacity:0;pointer-events:none;transition:all .3s ease;z-index:60;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.banner{background:var(--sand);border-radius:14px;padding:12px 16px;font-size:13.5px;margin-bottom:18px}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th{text-align:left;font-weight:400;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:0 8px 8px 0}
+td{padding:10px 8px 10px 0;border-top:1px solid var(--line);vertical-align:top}
+.tblwrap{overflow-x:auto}
+
+footer{text-align:center;color:var(--muted);font-size:12.5px;letter-spacing:.1em;padding:30px 0 10px}
+footer .ar{font-family:'Amiri',serif;color:var(--gold);font-size:17px}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;transition-duration:.001ms !important}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="mast">
+    <h1>BECOMING</h1>
+    <p class="tag">In Sha Allah, one day at a time. 🤍</p>
+  </header>
+</div>
+
+<nav>
+  <div class="wrap">
+    <div class="navrow" id="nav"></div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <div id="storeWarn"></div>
+
+  <!-- ============ TODAY ============ -->
+  <div class="view" id="v-today">
+    <div class="bism">
+      <div class="ar">بِسْمِ اللهِ</div>
+      <div class="en">In the name of Allah</div>
+      <div class="rule"><i></i><span>✦</span><i></i></div>
+    </div>
+
+    <div class="ribbon">
+      <div class="meta"><span id="ribDate">—</span><span id="ribDay">—</span></div>
+      <div class="dots" id="ribbon"></div>
+      <p class="legend" id="ribLegend">—</p>
+    </div>
+
+    <div id="whyBox"></div>
+    <div id="nudgeBox"></div>
+
+    <section class="block" style="margin-top:30px">
+      <p class="eyebrow">Today</p>
+      <div class="grid" id="todayTiles"></div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">🌸 Today's intention</p>
+      <div class="card">
+        <label class="f" for="intention">Today I want to…</label>
+        <textarea id="intention" placeholder="be gentle with myself"></textarea>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">🌷 Little joy</p>
+      <div class="card">
+        <label class="f" for="joyToday">Something that made me smile today</label>
+        <textarea id="joyToday" style="min-height:72px" placeholder="the way the light came in this morning"></textarea>
+        <p class="note" style="margin-top:8px">Saved automatically, and kept in your Little Joys.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ HABITS ============ -->
+  <div class="view" id="v-habits">
+    <section class="block">
+      <p class="eyebrow">Habits</p>
+      <div class="card">
+        <div class="stat">
+          <div><b id="hToday">0/13</b><span>TODAY</span></div>
+          <div><b id="hWeek">0%</b><span>THIS WEEK</span></div>
+          <div><b id="hStreak">0</b><span>DAY STREAK</span></div>
+        </div>
+        <div class="bar" style="margin-top:14px"><i id="hBar" style="width:0%"></i></div>
+        <p class="note" style="margin-top:14px" id="hWord">—</p>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">🌅 Morning</p>
+      <div class="checks" id="hMorning"></div>
+    </section>
+    <section class="block">
+      <p class="eyebrow">☀️ Day</p>
+      <div class="checks" id="hDay"></div>
+    </section>
+    <section class="block">
+      <p class="eyebrow">🌙 Night</p>
+      <div class="checks" id="hNight"></div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">Last two weeks</p>
+      <div class="card"><div id="hGrid"></div></div>
+    </section>
+  </div>
+
+  <!-- ============ BODY ============ -->
+  <div class="view" id="v-body">
+    <section class="block">
+      <p class="eyebrow">Weight</p>
+      <div class="card">
+        <div class="stat" id="wStats"></div>
+        <div class="bar rose" style="margin-top:16px"><i id="wBar" style="width:0%"></i></div>
+        <div id="wChart" style="margin-top:20px"></div>
+        <div class="row" style="margin-top:18px">
+          <div><label class="f" for="wDate">Date</label><input type="date" id="wDate"></div>
+          <div><label class="f" for="wKg">Weight (kg)</label><input type="number" step="0.1" id="wKg" placeholder="0.0"></div>
+        </div>
+        <button class="btn" style="margin-top:12px" onclick="addWeight()">Save weight</button>
+        <ul class="list" id="wList"></ul>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">Measurements</p>
+      <div class="card">
+        <div class="row mb">
+          <div><label class="f" for="mDate">Date</label><input type="date" id="mDate"></div>
+          <div><label class="f" for="mWaist">Waist</label><input type="number" step="0.1" id="mWaist"></div>
+          <div><label class="f" for="mHips">Hips</label><input type="number" step="0.1" id="mHips"></div>
+        </div>
+        <div class="row mb">
+          <div><label class="f" for="mBust">Bust</label><input type="number" step="0.1" id="mBust"></div>
+          <div><label class="f" for="mArms">Arms</label><input type="number" step="0.1" id="mArms"></div>
+          <div><label class="f" for="mOther">Other</label><input type="text" id="mOther" placeholder="thigh 58"></div>
+        </div>
+        <button class="btn" onclick="addMeasure()">Save measurements</button>
+        <div class="tblwrap"><table id="mTable"></table></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">🏋🏽‍♀️ Movement log</p>
+      <div class="card">
+        <div class="row mb">
+          <div><label class="f" for="kDate">Date</label><input type="date" id="kDate"></div>
+          <div><label class="f" for="kType">Kind</label>
+            <select id="kType">
+              <option>Home workout</option><option>Gym</option><option>Walking</option>
+              <option>Dance / aerobics</option><option>Rest</option>
+            </select></div>
+          <div><label class="f" for="kMin">Minutes</label><input type="number" id="kMin" placeholder="30"></div>
+        </div>
+        <div class="mb"><label class="f" for="kWhat">What I did</label><input type="text" id="kWhat" placeholder="20 min lower body + stretching"></div>
+        <div class="mb"><label class="f" for="kFeel">How I felt</label><input type="text" id="kFeel" placeholder="tired at first, proud after"></div>
+        <button class="btn" onclick="addWorkout()">Save movement</button>
+        <ul class="list" id="kList"></ul>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">📸 Progress photos</p>
+      <div class="card">
+        <div class="row mb">
+          <div><label class="f" for="bpDate">Date</label><input type="date" id="bpDate"></div>
+          <div><label class="f" for="bpCat">Angle</label>
+            <select id="bpCat"><option>Front</option><option>Side</option><option>Back</option></select></div>
+          <div style="display:flex;align-items:flex-end">
+            <label class="upl btn soft" style="justify-content:center">
+              Add photo<input type="file" accept="image/*" onchange="addPhoto(this,'body')">
+            </label>
+          </div>
+        </div>
+        <p class="note">Photos live on this device only. Tap two to compare them.</p>
+        <div class="shots" id="bpShots"></div>
+        <div id="bpCompare"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ FOOD ============ -->
+  <div class="view" id="v-food">
+    <section class="block">
+      <p class="eyebrow">🍽️ What I ate today</p>
+      <div class="card">
+        <div class="mb"><label class="f" for="m_Breakfast">Breakfast</label><input type="text" id="m_Breakfast" placeholder="oats, dates, tea"></div>
+        <div class="mb"><label class="f" for="m_Lunch">Lunch</label><input type="text" id="m_Lunch" placeholder="rice and stew"></div>
+        <div class="mb"><label class="f" for="m_Dinner">Dinner</label><input type="text" id="m_Dinner" placeholder="soup and a little bread"></div>
+        <div class="mb"><label class="f" for="m_Snacks">Snacks &amp; drinks</label><input type="text" id="m_Snacks" placeholder="groundnuts, one zobo"></div>
+        <p class="note">Just noticing, not counting. Written down is enough.</p>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">👩🏽‍🍳 A recipe I tried</p>
+      <div class="card">
+        <div class="row mb">
+          <div style="flex:2 1 200px"><label class="f" for="rName">What I made</label><input type="text" id="rName" placeholder="Coconut jollof"></div>
+          <div><label class="f" for="rDate">Date</label><input type="date" id="rDate"></div>
+        </div>
+        <div class="mb"><label class="f" for="rNote">Little note</label><textarea id="rNote" style="min-height:76px" placeholder="needed more pepper — next time less oil"></textarea></div>
+        <div class="row" style="align-items:center">
+          <label class="upl btn soft" style="justify-content:center">
+            <span id="rPhotoLab">Add photo</span><input type="file" accept="image/*" id="rPhoto" onchange="pickRecipePhoto(this)">
+          </label>
+          <button class="chk" id="rAgain" onclick="againToggle()" style="flex:0 0 auto"><i></i>Would make again</button>
+          <button class="btn" onclick="addRecipe()" style="flex:0 0 auto">Save recipe</button>
+        </div>
+      </div>
+      <div class="recipes" id="rGrid"></div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">Eating diary</p>
+      <div class="card"><ul class="list" id="mealList"></ul></div>
+    </section>
+  </div>
+
+  <!-- ============ SKIN ============ -->
+  <div class="view" id="v-skin">
+    <section class="block">
+      <p class="eyebrow">🧴 Today's skincare</p>
+      <div class="card">
+        <label class="f">Morning</label>
+        <div class="checks" id="skinAM"></div>
+        <label class="f" style="margin-top:20px">Night</label>
+        <div class="checks" id="skinPM"></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">📊 Skin check-in</p>
+      <div class="card">
+        <div id="skinScales"></div>
+        <div class="mb"><label class="f" for="sProd">Products used</label><input type="text" id="sProd" placeholder="niacinamide, moisturiser, SPF 50"></div>
+        <div class="mb"><label class="f" for="sNotes">Notes</label><textarea id="sNotes" style="min-height:76px" placeholder="skin felt calmer today"></textarea></div>
+        <button class="btn" onclick="addSkin()">Save check-in</button>
+        <ul class="list" id="sList"></ul>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">📸 Skin progress</p>
+      <div class="card">
+        <div class="row mb">
+          <div><label class="f" for="spDate">Date</label><input type="date" id="spDate"></div>
+          <div><label class="f" for="spCat">Angle</label>
+            <select id="spCat"><option>Front</option><option>Left</option><option>Right</option></select></div>
+          <div style="display:flex;align-items:flex-end">
+            <label class="upl btn soft" style="justify-content:center">
+              Add photo<input type="file" accept="image/*" onchange="addPhoto(this,'skin')">
+            </label>
+          </div>
+        </div>
+        <div class="shots" id="spShots"></div>
+        <div id="spCompare"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ CAREER ============ -->
+  <div class="view" id="v-career">
+    <section class="block">
+      <p class="eyebrow">🎯 Career goals</p>
+      <div class="card">
+        <div class="row mb">
+          <div style="flex:2 1 200px"><label class="f" for="gTitle">Goal</label><input type="text" id="gTitle" placeholder="Learn React"></div>
+          <div><label class="f" for="gDue">Deadline</label><input type="date" id="gDue"></div>
+        </div>
+        <div class="mb"><label class="f" for="gDesc">Description</label><input type="text" id="gDesc" placeholder="components, hooks, one real project"></div>
+        <button class="btn" onclick="addGoal()">Add goal</button>
+      </div>
+      <div id="goals"></div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">📚 Learning log</p>
+      <div class="card">
+        <div class="stat" id="lStats"></div>
+        <div class="row mb" style="margin-top:16px">
+          <div><label class="f" for="lDate">Date</label><input type="date" id="lDate"></div>
+          <div><label class="f" for="lMin">Minutes</label><input type="number" id="lMin" placeholder="45"></div>
+        </div>
+        <div class="mb"><label class="f" for="lWhat">What I studied</label><input type="text" id="lWhat" placeholder="JavaScript — array methods"></div>
+        <div class="mb"><label class="f" for="lLearn">What I learned</label><textarea id="lLearn" style="min-height:76px" placeholder="map returns a new array, forEach doesn't"></textarea></div>
+        <button class="btn" onclick="addLearn()">Save entry</button>
+        <ul class="list" id="lList"></ul>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ MONEY ============ -->
+  <div class="view" id="v-money">
+    <section class="block">
+      <p class="eyebrow">This month</p>
+      <div class="card">
+        <div class="stat" id="fStats"></div>
+        <div id="fFlow" style="margin-top:20px"></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">Add an entry</p>
+      <div class="card">
+        <div class="inout" id="fType"></div>
+        <div class="row mb">
+          <div style="flex:0 0 150px"><label class="f" for="fDate">Date</label><input type="date" id="fDate"></div>
+          <div><label class="f" for="fAmt">Amount</label><input type="number" step="1" id="fAmt" class="amtin" placeholder="0"></div>
+        </div>
+        <div class="row mb">
+          <div style="flex:2 1 200px"><label class="f" for="fWhat">What for</label><input type="text" id="fWhat" placeholder="AYNAR order"></div>
+          <div><label class="f" for="fCat">Category</label><select id="fCat"></select></div>
+        </div>
+        <button class="btn" onclick="addMoney()">Save entry</button>
+        <ul class="list" id="fList"></ul>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">🎯 Saving for</p>
+      <div class="card">
+        <div class="row mb">
+          <div style="flex:2 1 180px"><label class="f" for="potName">What I'm saving for</label><input type="text" id="potName" placeholder="Fabric for AYNAR"></div>
+          <div><label class="f" for="potTarget">Target</label><input type="number" id="potTarget" placeholder="150000"></div>
+        </div>
+        <button class="btn" onclick="addPot()">Start a pot</button>
+      </div>
+      <div id="pots"></div>
+    </section>
+  </div>
+
+  <!-- ============ DEEN ============ -->
+  <div class="view" id="v-deen">
+    <section class="block">
+      <p class="eyebrow">🤍 Istighfar</p>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+          <div id="istRing"></div>
+          <div style="flex:1;min-width:150px">
+            <div class="serifline" id="istCount">0</div>
+            <p class="note" id="istLeft">—</p>
+          </div>
+        </div>
+        <div class="checks" style="margin-top:16px" id="istBtns"></div>
+        <p class="note" style="margin-top:14px" id="istWord">—</p>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">🕌 Prayer check</p>
+      <div class="card">
+        <div class="checks" id="prayers"></div>
+        <div class="checks" style="margin-top:12px" id="extras"></div>
+        <p class="note" style="margin-top:14px">Tahajjud before Fajr · Surah Al-Waqi'ah after Maghrib.</p>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">🤲 Today's dua</p>
+      <div class="card">
+        <label class="f" for="d_dua">Today I prayed for…</label>
+        <textarea id="d_dua"></textarea>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">🌙 Reflection</p>
+      <div class="card">
+        <div class="mb"><label class="f" for="d_grateful">What am I grateful to Allah for?</label><textarea id="d_grateful" style="min-height:72px"></textarea></div>
+        <div class="mb"><label class="f" for="d_asking">What am I asking Allah for?</label><textarea id="d_asking" style="min-height:72px"></textarea></div>
+        <div class="mb"><label class="f" for="d_improve">What do I need to improve?</label><textarea id="d_improve" style="min-height:72px"></textarea></div>
+        <div><label class="f" for="d_taught">What did Allah teach me today?</label><textarea id="d_taught" style="min-height:72px"></textarea></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">📖 Quran</p>
+      <div class="card">
+        <div class="row mb">
+          <div><label class="f" for="d_surah">Surah</label><input type="text" id="d_surah" placeholder="Al-Mulk"></div>
+          <div><label class="f" for="d_ayah">Ayah / page</label><input type="text" id="d_ayah" placeholder="1–10"></div>
+        </div>
+        <label class="f" for="d_reflect">Reflection</label>
+        <textarea id="d_reflect" style="min-height:76px"></textarea>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">🤲 Duas answered</p>
+      <div class="card">
+        <p class="note mb">Write what you're asking for. Come back and mark it when Allah gives it.</p>
+        <div class="row mb">
+          <div style="flex:3 1 220px"><label class="f" for="duaText">I'm asking Allah for…</label><input type="text" id="duaText" placeholder="ease in the work I'm building"></div>
+        </div>
+        <button class="btn" onclick="addDua()">Add</button>
+        <ul class="list" id="duaOpen"></ul>
+      </div>
+      <div class="card" style="margin-top:14px">
+        <p class="eyebrow" style="margin-bottom:2px">Answered 🤍</p>
+        <ul class="list" id="duaDone"></ul>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">Past days</p>
+      <div class="card"><ul class="list" id="deenList"></ul></div>
+    </section>
+  </div>
+
+  <!-- ============ JOURNAL ============ -->
+  <div class="view" id="v-journal">
+    <section class="block">
+      <p class="eyebrow">📓 New entry</p>
+      <div class="card">
+        <div class="row mb">
+          <div style="flex:0 0 170px"><label class="f" for="jDate">Date</label><input type="date" id="jDate"></div>
+        </div>
+        <label class="f">Mood</label>
+        <div class="moods mb" id="moods"></div>
+        <div class="mb" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <p class="serifline" id="prompt" style="flex:1;min-width:200px;color:var(--rose)">—</p>
+          <button class="btn quiet" onclick="rollPrompt()">another prompt ↺</button>
+        </div>
+        <textarea id="jText" class="big" placeholder="Write as much or as little as you want."></textarea>
+        <button class="btn" style="margin-top:12px" onclick="addJournal()">Save entry</button>
+      </div>
+    </section>
+    <section class="block">
+      <p class="eyebrow">Entries</p>
+      <div class="card"><ul class="list" id="jList"></ul></div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">🤍 A letter to myself</p>
+      <div id="letterBox"></div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">🌙 Month close</p>
+      <div class="card">
+        <p class="note mb">At the end of each month, four lines. By December you'll have written the whole story.</p>
+        <div class="row mb">
+          <div style="flex:0 0 190px"><label class="f" for="cMonth">Month</label><select id="cMonth"></select></div>
+          <div><label class="f" for="cWord">One word for it</label><input type="text" id="cWord" placeholder="steady"></div>
+        </div>
+        <div class="mb"><label class="f" for="cChanged">What changed this month</label><textarea id="cChanged" style="min-height:80px"></textarea></div>
+        <div class="row mb">
+          <div><label class="f" for="cBest">The best day</label><input type="text" id="cBest" placeholder="the day I finally..."></div>
+          <div><label class="f" for="cHard">The hardest day</label><input type="text" id="cHard"></div>
+        </div>
+        <button class="btn" onclick="closeMonth()">Save month close</button>
+      </div>
+      <div id="monthList"></div>
+    </section>
+  </div>
+
+  <!-- ============ JOYS ============ -->
+  <div class="view" id="v-joys">
+    <section class="block">
+      <p class="eyebrow">🌸 My little joys</p>
+      <div class="card">
+        <p class="note mb">The small things count too. This is the part you'll want to read back.</p>
+        <div class="row mb">
+          <div style="flex:0 0 160px"><label class="f" for="joyDate">Date</label><input type="date" id="joyDate"></div>
+          <div style="flex:2 1 220px"><label class="f" for="joyText">Joy</label><input type="text" id="joyText" placeholder="I laughed so hard today"></div>
+        </div>
+        <button class="btn" onclick="addJoy()">Keep it</button>
+      </div>
+      <div id="joyBox"></div>
+    </section>
+  </div>
+
+  <!-- ============ SETTINGS ============ -->
+  <div class="view" id="v-settings">
+    <section class="block">
+      <p class="eyebrow">My profile</p>
+      <div class="card">
+        <div class="row mb">
+          <div><label class="f" for="pName">Name / nickname</label><input type="text" id="pName" placeholder="Manar"></div>
+          <div><label class="f" for="pStart">Starting date</label><input type="date" id="pStart"></div>
+        </div>
+        <div class="row mb">
+          <div><label class="f" for="pSW">Starting weight (kg)</label><input type="number" step="0.1" id="pSW"></div>
+          <div><label class="f" for="pGW">Goal weight (kg)</label><input type="number" step="0.1" id="pGW"></div>
+        </div>
+        <div class="row">
+          <div><label class="f" for="pWake">Target wake-up</label><input type="time" id="pWake"></div>
+          <div><label class="f" for="pWater">Daily water (glasses)</label><input type="number" id="pWater" min="1" max="20"></div>
+          <div><label class="f" for="pSleep">Target sleep time</label><input type="time" id="pSleep"></div>
+          <div><label class="f" for="pIst">Daily istighfar</label><input type="number" id="pIst" step="100"></div>
+          <div><label class="f" for="pCur">Currency symbol</label><input type="text" id="pCur" maxlength="3"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">Colour</p>
+      <div class="card">
+        <div class="themes" id="themes"></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">Why I started</p>
+      <div class="card">
+        <p class="note mb">This shows on your Today page. Write it for the November version of you.</p>
+        <textarea id="pWhy" placeholder="I started because…"></textarea>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">📖 The book</p>
+      <div class="card">
+        <p class="note mb">Everything you've written and photographed, laid out as one document. Meant for 31 December — but you can look any time.</p>
+        <button class="btn" onclick="openBook()">Make my book</button>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">My data</p>
+      <div class="card">
+        <p class="note mb" id="storeUse">—</p>
+        <div class="row">
+          <button class="btn" onclick="exportData()">Export my data</button>
+          <label class="upl btn soft" style="justify-content:center">Import my data<input type="file" accept="application/json" onchange="importData(this)"></label>
+        </div>
+        <p class="note" style="margin-top:16px">Everything is stored in this browser only. Export often — a downloaded file is the only real backup.</p>
+        <hr style="border:none;border-top:1px solid var(--line);margin:22px 0">
+        <button class="btn warn" onclick="clearAll()">Clear all data</button>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="ar">اللّٰهُمَّ بَارِكْ</div>
+    <div style="margin-top:6px">BECOMING · 2026</div>
+  </footer>
+</main>
+
+<div id="book">
+  <div class="bookbar">
+    <button class="btn soft" onclick="closeBook()">Close</button>
+    <button class="btn" onclick="window.print()">Print / save as PDF</button>
+  </div>
+  <div class="bookpage" id="bookPage"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   BECOMING — storage
+   ============================================================ */
+const $=id=>document.getElementById(id);
+const iso=d=>{const z=new Date(d);z.setMinutes(z.getMinutes()-z.getTimezoneOffset());return z.toISOString().slice(0,10);};
+const TODAY=iso(new Date());
+const END='2026-12-31';
+const uid=()=>Math.random().toString(36).slice(2,10);
+function pretty(s){const d=new Date(s+'T00:00:00');return d.toLocaleDateString(undefined,{day:'numeric',month:'short'});}
+function longDate(s){const d=new Date(s+'T00:00:00');return d.toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long',year:'numeric'});}
+function daysBetween(a,b){return Math.round((new Date(b+'T00:00:00')-new Date(a+'T00:00:00'))/864e5);}
+function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function byDateDesc(a,b){return a.date<b.date?1:a.date>b.date?-1:0;}
+
+const KEY='becoming.v1';
+let memoryOnly=false, mem=null;
+
+function blank(){
+  return {profile:{name:'',start:'2026-09-01',startWeight:null,goalWeight:null,wake:'05:30',sleep:'22:30',water:8,istighfar:10000,why:'',cur:'₦'},
+    days:{},weights:[],measures:[],workouts:[],skin:[],goals:[],learning:[],journal:[],joys:[],recipes:[],duas:[],money:[],pots:[],months:[],letter:{text:'',sealed:false,date:'',opened:false},
+    photos:{body:[],skin:[]}};
+}
+function load(){
+  try{const r=localStorage.getItem(KEY);return r?Object.assign(blank(),JSON.parse(r)):blank();}
+  catch(e){memoryOnly=true;return blank();}
+}
+let S=load();
+try{localStorage.setItem('becoming.test','1');localStorage.removeItem('becoming.test');}catch(e){memoryOnly=true;}
+
+let t=null;
+function save(){clearTimeout(t);t=setTimeout(commit,220);}
+function commit(){
+  if(memoryOnly){mem=S;return;}
+  try{localStorage.setItem(KEY,JSON.stringify(S));}
+  catch(e){toast('Storage is full — export your data, then remove a few photos.');}
+}
+function toast(m){const el=$('toast');el.textContent=m;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200);}
+
+/* ---------- day records ---------- */
+function fresh(){
+  return {water:0,intention:'',joy:'',habits:{},
+    am:{Cleanse:false,Treatment:false,Moisturise:false,SPF:false},
+    pm:{Cleanse:false,Treatment:false,Moisturise:false},
+    prayers:{Fajr:false,Dhuhr:false,Asr:false,Maghrib:false,Isha:false},
+    quran:false,dhikr:false,istighfar:0,tahajjud:false,waqiah:false,
+    meals:{Breakfast:'',Lunch:'',Dinner:'',Snacks:''},
+    deen:{dua:'',grateful:'',asking:'',improve:'',taught:'',surah:'',ayah:'',reflect:''}};
+}
+const EMPTY=fresh();
+function day(d){
+  if(!S.days[d]) S.days[d]=fresh();
+  const x=S.days[d];                                  /* fill gaps in older records */
+  if(!x.meals)x.meals={Breakfast:'',Lunch:'',Dinner:'',Snacks:''};
+  if(typeof x.istighfar!=='number')x.istighfar=0;
+  return x;
+}
+function peek(d){ return S.days[d]||EMPTY; }   /* read-only: never writes a new day */
+const D=()=>day(TODAY);
+
+/* ---------- habits model ---------- */
+const HABITS=[
+  {k:'tahajjud',g:'m',t:'Tahajjud',           auto:d=>d.tahajjud},
+  {k:'wake',   g:'m', t:'Wake up at target time'},
+  {k:'water1', g:'m', t:'Drink water',       auto:d=>d.water>=1},
+  {k:'fajr',   g:'m', t:'Fajr',              auto:d=>d.prayers.Fajr},
+  {k:'amskin', g:'m', t:'Morning skincare',  auto:d=>Object.values(d.am).every(Boolean)},
+  {k:'move',   g:'d', t:'Movement',          auto:(d,dt)=>S.workouts.some(w=>w.date===dt)},
+  {k:'watergoal',g:'d',t:'Water goal',       auto:d=>d.water>=(S.profile.water||8)},
+  {k:'learn',  g:'d', t:'Learning',          auto:(d,dt)=>S.learning.some(l=>l.date===dt)},
+  {k:'quran',  g:'d', t:'Quran',             auto:d=>d.quran||!!d.deen.surah},
+  {k:'prayers',g:'d', t:'Prayers',           auto:d=>Object.values(d.prayers).every(Boolean)},
+  {k:'istighfar',g:'d',t:'10,000 istighfar',  auto:d=>d.istighfar>=(S.profile.istighfar||10000)},
+  {k:'waqiah', g:'n', t:'Surah Al-Waqi\'ah',  auto:d=>d.waqiah},
+  {k:'food',   g:'n', t:'Noted what I ate',   auto:d=>Object.values(d.meals||{}).some(v=>v&&v.trim())},
+  {k:'pmskin', g:'n', t:'Night skincare',    auto:d=>Object.values(d.pm).every(Boolean)},
+  {k:'journal',g:'n', t:'Journal',           auto:(d,dt)=>S.journal.some(j=>j.date===dt)},
+  {k:'scroll', g:'n', t:'Less scrolling'},
+  {k:'sleep',  g:'n', t:'Sleep at target time'}
+];
+function habitOn(h,dt){const d=peek(dt);return !!d.habits[h.k] || (h.auto?!!h.auto(d,dt):false);}
+function score(dt){let n=0;HABITS.forEach(h=>{if(habitOn(h,dt))n++;});return n;}
+const TOTAL=HABITS.length;
+
+function streak(){
+  let n=0,d=new Date();
+  if(score(iso(d))===0) d.setDate(d.getDate()-1);
+  while(true){const k=iso(d);if(score(k)>0){n++;d.setDate(d.getDate()-1);}else break;if(n>400)break;}
+  return n;
+}
+function weekPct(){
+  let sum=0,d=new Date();
+  for(let i=0;i<7;i++){sum+=score(iso(d));d.setDate(d.getDate()-1);}
+  return Math.round(sum/(7*TOTAL)*100);
+}
+function overallPct(){
+  const start=S.profile.start||TODAY;
+  if(daysBetween(start,TODAY)<0) return 0;
+  const n=Math.max(1,daysBetween(start,TODAY)+1);
+  let sum=0,d=new Date(start+'T00:00:00');
+  for(let i=0;i<n;i++){sum+=score(iso(d));d.setDate(d.getDate()+1);}
+  return Math.round(sum/(n*TOTAL)*100);
+}
+
+/* ============================================================
+   navigation
+   ============================================================ */
+const VIEWS=[['today','🏠 Today'],['habits','🌱 Habits'],['body','🏃🏽‍♀️ Body'],['food','🍲 Food'],['skin','✨ Skin'],
+  ['career','💻 Career'],['money','💰 Money'],['deen','🕌 Deen'],['journal','📓 Journal'],['joys','🌸 Little Joys'],['settings','⚙️ Settings']];
+let current='today';
+function buildNav(){
+  $('nav').innerHTML=VIEWS.map(([k,l])=>`<button data-v="${k}">${l}</button>`).join('');
+  $('nav').querySelectorAll('button').forEach(b=>b.onclick=()=>go(b.dataset.v));
+}
+function go(v){
+  current=v;location.hash=v;
+  document.querySelectorAll('.view').forEach(e=>e.classList.remove('on'));
+  $('v-'+v).classList.add('on');
+  $('nav').querySelectorAll('button').forEach(b=>
+    b.setAttribute('aria-current',b.dataset.v===v?'page':'false'));
+  window.scrollTo({top:0,behavior:'instant'});
+  render();
+}
+
+/* ============================================================
+   TODAY
+   ============================================================ */
+function ring(pct,size=44){
+  const r=(size-6)/2,c=2*Math.PI*r;
+  return `<svg class="ring" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
+    <circle class="bg" cx="${size/2}" cy="${size/2}" r="${r}"></circle>
+    <circle class="fg" cx="${size/2}" cy="${size/2}" r="${r}"
+      stroke-dasharray="${c}" stroke-dashoffset="${c*(1-Math.min(1,pct))}"
+      transform="rotate(-90 ${size/2} ${size/2})"></circle></svg>`;
+}
+function renderToday(){
+  const d=D(), p=S.profile;
+  $('ribDate').textContent=longDate(TODAY);
+  const start=p.start||TODAY;
+  const dayNo=daysBetween(start,TODAY)+1;
+  const left=Math.max(0,daysBetween(TODAY,END));
+  $('ribDay').textContent = dayNo<1
+    ? `Begins ${pretty(start)} · in ${1-dayNo} day${1-dayNo===1?'':'s'}`
+    : `Day ${dayNo} · ${left} days left`;
+
+  const total=daysBetween(start,END)+1;
+  let dots='',dt=new Date(start+'T00:00:00');
+  for(let i=0;i<Math.max(1,total);i++){
+    const k=iso(dt), s=score(k), past=k<=TODAY;
+    let cls='dot';
+    if(past){const r=s/TOTAL;cls+=r>=.7?' l3':r>=.35?' l2':r>0?' l1':'';}
+    if(k===TODAY)cls+=' today';
+    dots+=`<span class="${cls}" title="${k} · ${s}/${TOTAL}"></span>`;
+    dt.setDate(dt.getDate()+1);
+  }
+  $('ribbon').innerHTML=dots;
+  $('ribLegend').textContent = dayNo<1
+    ? `${total} days, from ${pretty(start)} to 31 Dec. Nothing to prove yet — you can already write and log today.`
+    : `Every day between ${pretty(start)} and 31 Dec. Overall consistency ${overallPct()}%.`;
+
+  const water=d.water, goal=p.water||8;
+  const prayed=Object.values(d.prayers).filter(Boolean).length;
+  const skinDone=Object.values(d.am).filter(Boolean).length+Object.values(d.pm).filter(Boolean).length;
+  const mins=S.learning.filter(l=>l.date===TODAY).reduce((a,b)=>a+(+b.minutes||0),0);
+  const moved=S.workouts.find(w=>w.date===TODAY);
+  const jr=S.journal.find(j=>j.date===TODAY);
+  const mealsNoted=Object.values(d.meals||{}).filter(v=>v&&v.trim()).length;
+
+  const tiles=[
+    {icon:'💧',lab:'Water',val:`${water}<small>/${goal}</small>`,sub:'tap to add a glass',done:water>=goal,
+      click:()=>{d.water++;save();render();}},
+    {icon:'🌅',lab:'Wake-up',val:d.habits.wake?'Up':'—',sub:`target ${p.wake||'05:30'}`,done:!!d.habits.wake,
+      click:()=>{d.habits.wake=!d.habits.wake;save();render();}},
+    {icon:'🏃🏽‍♀️',lab:'Movement',val:moved?(moved.minutes?moved.minutes+'<small> min</small>':'Done'):'—',
+      sub:moved?moved.type:'log it in Body',done:!!moved,click:()=>go('body')},
+    {icon:'🍲',lab:'Food',val:mealsNoted?`${mealsNoted}<small>/4</small>`:'—',
+      sub:mealsNoted?'written down':'what did you eat?',done:mealsNoted>0,click:()=>go('food')},
+    {icon:'🧴',lab:'Skincare',val:`${skinDone}<small>/7</small>`,sub:'morning + night',done:skinDone===7,click:()=>go('skin')},
+    {icon:'🕌',lab:'Deen',val:`${prayed}<small>/5</small>`,
+      sub:`istighfar ${(d.istighfar||0).toLocaleString()}`,done:prayed===5,click:()=>go('deen')},
+    {icon:'📚',lab:'Learning',val:mins?`${Math.floor(mins/60)?Math.floor(mins/60)+'h ':''}${mins%60}<small>m</small>`:'—',
+      sub:'time studied today',done:mins>0,click:()=>go('career')},
+    {icon:'📓',lab:'Journal',val:jr?(jr.mood||'✓'):'—',sub:jr?'written':'still blank',done:!!jr,click:()=>go('journal')}
+  ];
+  const box=$('todayTiles');box.innerHTML='';
+  tiles.forEach(t=>{
+    const b=document.createElement('button');
+    b.className='tile'+(t.done?' done':'');
+    b.innerHTML=`<div class="lab">${t.icon} ${t.lab}</div><div class="val">${t.val}</div><div class="sub">${t.sub}</div>`;
+    b.onclick=t.click;box.appendChild(b);
+  });
+
+  $('whyBox').innerHTML = p.why && p.why.trim()
+    ? `<div class="why"><div class="lab">Why I started</div><p class="serifline" style="margin:0">${esc(p.why)}</p></div>` : '';
+
+  const prev=prevMonth();
+  const openMonth = prev && MONTHS.includes(prev) && !S.months.find(m=>m.month===prev)
+      && new Date().getDate()<=10 && TODAY>prev;
+  $('nudgeBox').innerHTML = openMonth
+    ? `<div class="nudge"><span>${monthName(prev)} is done. Four lines and it's yours.</span>
+       <button class="btn" onclick="go('journal');setTimeout(()=>$('cChanged').scrollIntoView({block:'center'}),260)">Close the month</button></div>` : '';
+
+  if($('intention')!==document.activeElement) $('intention').value=d.intention||'';
+  if($('joyToday')!==document.activeElement) $('joyToday').value=d.joy||'';
+}
+
+/* ============================================================
+   HABITS
+   ============================================================ */
+function renderHabits(){
+  const s=score(TODAY);
+  $('hToday').textContent=`${s}/${TOTAL}`;
+  $('hWeek').textContent=weekPct()+'%';
+  $('hStreak').textContent=streak();
+  $('hBar').style.width=(s/TOTAL*100)+'%';
+  $('hWord').textContent = s===0
+    ? 'Nothing ticked yet. The day is still open. 🤍'
+    : s<TOTAL/2 ? 'Some is not nothing. Keep going gently.'
+    : s<TOTAL ? 'Lovely. This is what consistency actually looks like.'
+    : 'Every single one today. Ma sha Allah. 🤍';
+
+  const groups={m:$('hMorning'),d:$('hDay'),n:$('hNight')};
+  Object.values(groups).forEach(g=>g.innerHTML='');
+  HABITS.forEach(h=>{
+    const on=habitOn(h,TODAY);
+    const isAuto=h.auto&&h.auto(day(TODAY),TODAY);
+    const b=document.createElement('button');
+    b.className='chk'+(on?' on':'')+(isAuto?' auto':'');
+    b.innerHTML=`<i></i>${h.t}${isAuto?'<span class="aut">auto</span>':''}`;
+    b.onclick=()=>{const d=D();d.habits[h.k]=!d.habits[h.k];save();render();};
+    groups[h.g].appendChild(b);
+  });
+
+  let g='<div class="dots" style="gap:6px">';
+  const dd=new Date();dd.setDate(dd.getDate()-13);
+  for(let i=0;i<14;i++){
+    const k=iso(dd),sc=score(k),r=sc/TOTAL;
+    g+=`<span class="dot ${r>=.7?'l3':r>=.35?'l2':r>0?'l1':''} ${k===TODAY?'today':''}"
+      style="width:16px;height:16px;border-radius:6px" title="${k} · ${sc}/${TOTAL}"></span>`;
+    dd.setDate(dd.getDate()+1);
+  }
+  $('hGrid').innerHTML=g+'</div><p class="note" style="margin-top:12px">🌱 Don\'t break the habit of trying. A pale square is just a day that was hard.</p>';
+}
+
+/* ============================================================
+   BODY
+   ============================================================ */
+function addWeight(){
+  const d=$('wDate').value||TODAY, kg=parseFloat($('wKg').value);
+  if(!kg){toast('Add a weight first.');return;}
+  S.weights=S.weights.filter(w=>w.date!==d);
+  S.weights.push({date:d,kg});S.weights.sort((a,b)=>a.date<b.date?-1:1);
+  if(!S.profile.startWeight)S.profile.startWeight=kg;
+  $('wKg').value='';commit();render();toast('Saved.');
+}
+function chart(){
+  const w=S.weights;
+  if(w.length<2)return '<p class="empty">Two entries and a line will appear here.</p>';
+  const W=640,H=170,P=26;
+  const vals=w.map(x=>x.kg).concat(S.profile.goalWeight?[+S.profile.goalWeight]:[]);
+  let lo=Math.min(...vals),hi=Math.max(...vals);if(hi-lo<2){lo-=1;hi+=1;}
+  const t0=new Date(w[0].date).getTime(),t1=new Date(w[w.length-1].date).getTime()||t0+1;
+  const X=d=>P+((new Date(d).getTime()-t0)/Math.max(1,t1-t0))*(W-2*P);
+  const Y=v=>H-P-((v-lo)/(hi-lo))*(H-2*P);
+  const pts=w.map(x=>`${X(x.date).toFixed(1)},${Y(x.kg).toFixed(1)}`).join(' ');
+  const goal=S.profile.goalWeight?`<line x1="${P}" y1="${Y(+S.profile.goalWeight)}" x2="${W-P}" y2="${Y(+S.profile.goalWeight)}"
+      stroke="var(--sage)" stroke-width="1" stroke-dasharray="4 5"></line>
+      <text x="${W-P}" y="${Y(+S.profile.goalWeight)-7}" text-anchor="end" font-size="11" fill="var(--sage)">goal</text>`:'';
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" style="overflow:visible">
+    ${goal}
+    <polyline points="${pts}" fill="none" stroke="var(--rose)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline>
+    ${w.map(x=>`<circle cx="${X(x.date)}" cy="${Y(x.kg)}" r="3.4" fill="var(--paper)" stroke="var(--rose)" stroke-width="2"></circle>`).join('')}
+    <text x="${P}" y="${H-4}" font-size="11" fill="var(--muted)">${pretty(w[0].date)}</text>
+    <text x="${W-P}" y="${H-4}" text-anchor="end" font-size="11" fill="var(--muted)">${pretty(w[w.length-1].date)}</text>
+  </svg>`;
+}
+function renderBody(){
+  const w=S.weights,p=S.profile;
+  const start=p.startWeight?+p.startWeight:(w[0]?w[0].kg:null);
+  const cur=w.length?w[w.length-1].kg:start;
+  const goal=p.goalWeight?+p.goalWeight:null;
+  const lost=(start!=null&&cur!=null)?(start-cur):null;
+  const left=(goal!=null&&cur!=null)?(cur-goal):null;
+  const cell=(v,l)=>`<div><b>${v}</b><span>${l}</span></div>`;
+  $('wStats').innerHTML=
+    cell(start!=null?start+'kg':'—','STARTING')+
+    cell(cur!=null?cur+'kg':'—','NOW')+
+    cell(goal!=null?goal+'kg':'—','GOAL')+
+    cell(lost!=null?(lost>=0?'-':'+')+Math.abs(lost).toFixed(1)+'kg':'—','CHANGE')+
+    cell(left!=null?Math.max(0,left).toFixed(1)+'kg':'—','TO GO');
+  let pct=0;
+  if(start!=null&&goal!=null&&start!==goal&&cur!=null) pct=Math.min(100,Math.max(0,(start-cur)/(start-goal)*100));
+  $('wBar').style.width=pct+'%';
+  $('wChart').innerHTML=chart();
+  $('wList').innerHTML=[...w].reverse().slice(0,8).map(x=>
+    `<li><span class="when">${pretty(x.date)}</span><div class="body"><h4>${x.kg} kg</h4></div>
+     <button class="x" onclick="delItem('weights','${x.date}','date')">✕</button></li>`).join('')
+    ||'<li class="empty">No weights yet.</li>';
+
+  $('mTable').innerHTML= S.measures.length
+    ? `<tr><th>Date</th><th>Waist</th><th>Hips</th><th>Bust</th><th>Arms</th><th>Other</th><th></th></tr>`+
+      [...S.measures].sort(byDateDesc).map(m=>`<tr><td>${pretty(m.date)}</td><td>${m.waist||'—'}</td><td>${m.hips||'—'}</td>
+      <td>${m.bust||'—'}</td><td>${m.arms||'—'}</td><td>${esc(m.other||'—')}</td>
+      <td><button class="x" onclick="delItem('measures','${m.id}')">✕</button></td></tr>`).join('')
+    : '';
+  if(!S.measures.length)$('mTable').innerHTML='<tr><td class="empty" style="border:none">Nothing measured yet.</td></tr>';
+
+  $('kList').innerHTML=[...S.workouts].sort(byDateDesc).slice(0,10).map(k=>
+    `<li><span class="when">${pretty(k.date)}</span><div class="body">
+      <h4>${esc(k.type)}${k.minutes?' · '+k.minutes+' min':''}</h4>
+      <p>${esc([k.what,k.feel].filter(Boolean).join(' — '))}</p></div>
+     <button class="x" onclick="delItem('workouts','${k.id}')">✕</button></li>`).join('')
+    ||'<li class="empty">No movement logged yet. Rest days count too.</li>';
+
+  renderShots('body','bpShots','bpCompare');
+}
+function addMeasure(){
+  const m={id:uid(),date:$('mDate').value||TODAY,waist:$('mWaist').value,hips:$('mHips').value,
+    bust:$('mBust').value,arms:$('mArms').value,other:$('mOther').value};
+  if(!m.waist&&!m.hips&&!m.bust&&!m.arms&&!m.other){toast('Add at least one number.');return;}
+  S.measures.push(m);['mWaist','mHips','mBust','mArms','mOther'].forEach(i=>$(i).value='');
+  commit();render();toast('Saved.');
+}
+function addWorkout(){
+  const k={id:uid(),date:$('kDate').value||TODAY,type:$('kType').value,minutes:$('kMin').value,
+    what:$('kWhat').value,feel:$('kFeel').value};
+  S.workouts.push(k);['kMin','kWhat','kFeel'].forEach(i=>$(i).value='');
+  commit();render();toast('Logged.');
+}
+
+/* ============================================================
+   SKIN
+   ============================================================ */
+function renderSkin(){
+  const d=D();
+  const draw=(obj,el)=>{
+    const box=$(el);box.innerHTML='';
+    Object.keys(obj).forEach(k=>{
+      const b=document.createElement('button');
+      b.className='chk'+(obj[k]?' on':'');
+      b.innerHTML=`<i></i>${k}`;
+      b.onclick=()=>{obj[k]=!obj[k];save();render();};
+      box.appendChild(b);
+    });
+  };
+  draw(d.am,'skinAM');draw(d.pm,'skinPM');
+
+  if(!$('skinScales').dataset.built){
+    const rows=[['overall','Overall skin'],['breakouts','Breakouts'],['pigment','Hyperpigmentation'],['texture','Texture']];
+    $('skinScales').innerHTML=rows.map(([k,l])=>
+      `<div class="mb"><label class="f" for="sc_${k}">${l}</label>
+       <div class="scale"><input type="range" min="1" max="10" value="5" id="sc_${k}"
+        oninput="this.nextElementSibling.textContent=this.value"><b>5</b></div></div>`).join('');
+    $('skinScales').dataset.built='1';
+  }
+
+  $('sList').innerHTML=[...S.skin].sort(byDateDesc).slice(0,10).map(s=>
+    `<li><span class="when">${pretty(s.date)}</span><div class="body">
+      <h4>Skin ${s.overall}/10 · breakouts ${s.breakouts} · pigment ${s.pigment} · texture ${s.texture}</h4>
+      <p>${esc([s.products,s.notes].filter(Boolean).join(' — '))}</p></div>
+     <button class="x" onclick="delItem('skin','${s.id}')">✕</button></li>`).join('')
+    ||'<li class="empty">No check-ins yet.</li>';
+
+  renderShots('skin','spShots','spCompare');
+}
+function addSkin(){
+  const g=k=>+$('sc_'+k).value;
+  S.skin.push({id:uid(),date:TODAY,overall:g('overall'),breakouts:g('breakouts'),
+    pigment:g('pigment'),texture:g('texture'),products:$('sProd').value,notes:$('sNotes').value});
+  $('sNotes').value='';commit();render();toast('Check-in saved.');
+}
+
+/* ============================================================
+   PHOTOS
+   ============================================================ */
+const picked={body:[],skin:[]};
+function addPhoto(input,group){
+  const f=input.files[0];if(!f)return;
+  const date=$(group==='body'?'bpDate':'spDate').value||TODAY;
+  const cat=$(group==='body'?'bpCat':'spCat').value;
+  const r=new FileReader();
+  r.onload=e=>{
+    const img=new Image();
+    img.onload=()=>{
+      const max=760,sc=Math.min(1,max/Math.max(img.width,img.height));
+      const c=document.createElement('canvas');
+      c.width=Math.round(img.width*sc);c.height=Math.round(img.height*sc);
+      c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+      S.photos[group].push({id:uid(),date,cat,data:c.toDataURL('image/jpeg',0.72)});
+      commit();render();toast('Photo added.');
+    };
+    img.src=e.target.result;
+  };
+  r.readAsDataURL(f);input.value='';
+}
+function renderShots(group,shotsEl,compEl){
+  const list=[...S.photos[group]].sort(byDateDesc);
+  $(shotsEl).innerHTML=list.map(p=>
+    `<div class="shot ${picked[group].includes(p.id)?'sel':''}" onclick="pick('${group}','${p.id}')">
+      <img src="${p.data}" alt="${p.cat} on ${p.date}">
+      <button class="del" onclick="event.stopPropagation();delPhoto('${group}','${p.id}')">✕</button>
+      <div class="cap">${pretty(p.date)} · ${p.cat}</div></div>`).join('')
+    ||'<p class="empty">No photos yet. The first one is the one you\'ll be glad you took.</p>';
+  const sel=picked[group].map(id=>list.find(p=>p.id===id)).filter(Boolean);
+  $(compEl).innerHTML = sel.length===2
+    ? `<p class="eyebrow" style="margin-top:22px">Then → now</p><div class="compare">
+       ${sel.sort((a,b)=>a.date<b.date?-1:1).map(p=>
+        `<figure><img src="${p.data}" alt=""><figcaption>${longDate(p.date)} · ${p.cat}</figcaption></figure>`).join('')}
+       </div><button class="btn quiet" onclick="picked['${group}']=[];render()">clear comparison</button>`
+    : (picked[group].length===1?'<p class="note" style="margin-top:10px">Pick one more to compare.</p>':'');
+}
+function pick(g,id){
+  const i=picked[g].indexOf(id);
+  if(i>-1)picked[g].splice(i,1);else{picked[g].push(id);if(picked[g].length>2)picked[g].shift();}
+  render();
+}
+function delPhoto(g,id){
+  if(!confirm('Delete this photo?'))return;
+  S.photos[g]=S.photos[g].filter(p=>p.id!==id);picked[g]=[];commit();render();
+}
+
+/* ============================================================
+   CAREER
+   ============================================================ */
+function addGoal(){
+  const title=$('gTitle').value.trim();
+  if(!title){toast('Give the goal a name.');return;}
+  S.goals.push({id:uid(),title,desc:$('gDesc').value,due:$('gDue').value,progress:0,status:'In progress'});
+  $('gTitle').value='';$('gDesc').value='';commit();render();toast('Goal added.');
+}
+function setGoal(id,f,v){const g=S.goals.find(x=>x.id===id);if(!g)return;g[f]=v;if(f==='progress'&&+v===100)g.status='Done';save();renderCareer();}
+function renderCareer(){
+  $('goals').innerHTML = S.goals.length ? S.goals.map(g=>`
+    <div class="card" style="margin-top:12px">
+      <div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start">
+        <div><h3 style="font-size:19px">${esc(g.title)}</h3>
+          <p class="note">${esc(g.desc||'')}${g.due?' · due '+pretty(g.due):''}</p></div>
+        <button class="x" onclick="delItem('goals','${g.id}')">✕</button>
+      </div>
+      <div class="scale" style="margin-top:14px">
+        <input type="range" min="0" max="100" step="5" value="${g.progress}"
+          oninput="this.nextElementSibling.textContent=this.value+'%'"
+          onchange="setGoal('${g.id}','progress',+this.value)">
+        <b style="width:48px">${g.progress}%</b>
+      </div>
+      <div class="bar" style="margin-top:6px"><i style="width:${g.progress}%"></i></div>
+      <select style="margin-top:12px;max-width:200px" onchange="setGoal('${g.id}','status',this.value)">
+        ${['Not started','In progress','Almost there','Done'].map(s=>
+          `<option ${g.status===s?'selected':''}>${s}</option>`).join('')}
+      </select>
+    </div>`).join('') : '<p class="empty">No goals yet. Start with one you can finish this month.</p>';
+
+  const mth=TODAY.slice(0,7);
+  const sum=a=>a.reduce((x,y)=>x+(+y.minutes||0),0);
+  const m=sum(S.learning.filter(l=>l.date.slice(0,7)===mth)), all=sum(S.learning);
+  const fmt=x=>`${Math.floor(x/60)}h ${x%60}m`;
+  $('lStats').innerHTML=`<div><b>${fmt(m)}</b><span>THIS MONTH</span></div>
+    <div><b>${fmt(all)}</b><span>ALL TIME</span></div>
+    <div><b>${S.learning.length}</b><span>SESSIONS</span></div>`;
+  $('lList').innerHTML=[...S.learning].sort(byDateDesc).slice(0,12).map(l=>
+    `<li><span class="when">${pretty(l.date)}</span><div class="body">
+      <h4>${esc(l.what||'Study')}${l.minutes?' · '+l.minutes+' min':''}</h4>
+      <p>${esc(l.learned||'')}</p></div>
+     <button class="x" onclick="delItem('learning','${l.id}')">✕</button></li>`).join('')
+    ||'<li class="empty">Nothing logged yet.</li>';
+}
+function addLearn(){
+  const what=$('lWhat').value.trim();
+  if(!what){toast('What did you study?');return;}
+  S.learning.push({id:uid(),date:$('lDate').value||TODAY,minutes:$('lMin').value,what,learned:$('lLearn').value});
+  ['lWhat','lLearn','lMin'].forEach(i=>$(i).value='');commit();render();toast('Logged.');
+}
+
+/* ============================================================
+   FOOD
+   ============================================================ */
+let pendingPhoto=null, wouldAgain=false;
+function pickRecipePhoto(input){
+  const f=input.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=e=>{
+    const img=new Image();
+    img.onload=()=>{
+      const max=760,sc=Math.min(1,max/Math.max(img.width,img.height));
+      const c=document.createElement('canvas');
+      c.width=Math.round(img.width*sc);c.height=Math.round(img.height*sc);
+      c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+      pendingPhoto=c.toDataURL('image/jpeg',0.72);
+      $('rPhotoLab').textContent='Photo ready ✓';
+    };
+    img.src=e.target.result;
+  };
+  r.readAsDataURL(f);input.value='';
+}
+function againToggle(){wouldAgain=!wouldAgain;$('rAgain').classList.toggle('on',wouldAgain);}
+function addRecipe(){
+  const name=$('rName').value.trim();
+  if(!name){toast('What did you make?');return;}
+  S.recipes.push({id:uid(),date:$('rDate').value||TODAY,name,note:$('rNote').value,photo:pendingPhoto,again:wouldAgain});
+  $('rName').value='';$('rNote').value='';pendingPhoto=null;wouldAgain=false;
+  $('rPhotoLab').textContent='Add photo';$('rAgain').classList.remove('on');
+  commit();render();toast('Saved to your kitchen. 🍲');
+}
+function renderFood(){
+  const d=D();
+  Object.keys(d.meals).forEach(k=>{const el=$('m_'+k);if(el&&el!==document.activeElement)el.value=d.meals[k]||'';});
+
+  $('rGrid').innerHTML=[...S.recipes].sort(byDateDesc).map(r=>
+    `<div class="rcard">
+      ${r.photo?`<img class="ph" src="${r.photo}" alt="${esc(r.name)}">`:'<div class="no">🍲</div>'}
+      <button class="del" onclick="delItem('recipes','${r.id}')">✕</button>
+      <div class="txt"><h4>${esc(r.name)}</h4><p>${esc(r.note||'')}</p>
+        ${r.again?'<span class="again">would make again</span>':''}
+        <span class="when">${pretty(r.date)}</span></div>
+    </div>`).join('')
+    ||'<p class="empty">No recipes yet. The first one can be something easy.</p>';
+
+  const past=Object.keys(S.days).filter(k=>k!==TODAY&&S.days[k].meals&&Object.values(S.days[k].meals).some(v=>v&&v.trim()))
+    .sort().reverse().slice(0,14);
+  $('mealList').innerHTML=past.map(k=>{
+    const m=S.days[k].meals;
+    const bits=Object.keys(m).filter(x=>m[x]&&m[x].trim()).map(x=>x+': '+m[x]);
+    return `<li><span class="when">${pretty(k)}</span><div class="body"><p>${esc(bits.join('\n'))}</p></div></li>`;
+  }).join('')||'<li class="empty">Days you write down will collect here.</li>';
+}
+
+/* ============================================================
+   MONEY
+   ============================================================ */
+const CATS={
+  in:['AYNAR','Salary','Freelance','Gift','Other'],
+  out:['Food','Transport','Data','Family','Sadaqah','Business','Personal','Other']
+};
+let flowType='in';
+function money(n){return (S.profile.cur||'₦')+Math.round(+n||0).toLocaleString();}
+function setFlow(t){flowType=t;renderMoney();}
+function addMoney(){
+  const amt=parseFloat($('fAmt').value);
+  if(!amt||amt<=0){toast('Add an amount first.');return;}
+  S.money.push({id:uid(),date:$('fDate').value||TODAY,type:flowType,amount:amt,
+    what:$('fWhat').value,cat:$('fCat').value});
+  $('fAmt').value='';$('fWhat').value='';
+  commit();renderMoney();toast('Saved.');
+}
+function addPot(){
+  const name=$('potName').value.trim();
+  if(!name){toast('What are you saving for?');return;}
+  S.pots.push({id:uid(),name,target:+$('potTarget').value||0,saved:0});
+  $('potName').value='';$('potTarget').value='';
+  commit();renderMoney();toast('Pot started.');
+}
+function feedPot(id){
+  const pot=S.pots.find(x=>x.id===id);if(!pot)return;
+  const v=prompt('How much are you putting in?','');
+  const n=parseFloat(v);if(!n)return;
+  pot.saved=Math.max(0,pot.saved+n);commit();renderMoney();
+  if(pot.target&&pot.saved>=pot.target)toast('You reached it. 🤍');
+}
+function renderMoney(){
+  const mth=TODAY.slice(0,7);
+  const sum=a=>a.reduce((x,y)=>x+(+y.amount||0),0);
+  const thisM=S.money.filter(m=>m.date.slice(0,7)===mth);
+  const inM=sum(thisM.filter(m=>m.type==='in')), outM=sum(thisM.filter(m=>m.type==='out'));
+  const sad=sum(S.money.filter(m=>m.cat==='Sadaqah'));
+  const kept=sum(S.money.filter(m=>m.type==='in'))-sum(S.money.filter(m=>m.type==='out'));
+  const cell=(v,l,cls)=>`<div><b class="${cls||''}">${v}</b><span>${l}</span></div>`;
+  $('fStats').innerHTML=cell(money(inM),'CAME IN')+cell(money(outM),'WENT OUT')+
+    cell(money(inM-outM),'KEPT')+cell(money(sad),'SADAQAH','sadaqah')+cell(money(kept),'KEPT ALL 4 MONTHS');
+
+  const seen=[...new Set(S.money.map(m=>m.date.slice(0,7)))];
+  const months=[...new Set([...MONTHS.filter(m=>m<=mth),...seen])].sort();
+  const peak=Math.max(1,...months.map(m=>Math.max(
+    sum(S.money.filter(x=>x.date.slice(0,7)===m&&x.type==='in')),
+    sum(S.money.filter(x=>x.date.slice(0,7)===m&&x.type==='out')))));
+  $('fFlow').innerHTML=months.length?months.map(m=>{
+    const i=sum(S.money.filter(x=>x.date.slice(0,7)===m&&x.type==='in'));
+    const o=sum(S.money.filter(x=>x.date.slice(0,7)===m&&x.type==='out'));
+    return `<div class="flow"><span class="mlab">${monthName(m).slice(0,3)}</span>
+      <span class="track"><i class="b" style="width:${i/peak*100}%"></i><i class="b out" style="width:${o/peak*100}%"></i></span>
+      <span class="amt">in ${money(i)}<br>out ${money(o)}</span></div>`;
+  }).join('')+'<p class="note" style="margin-top:12px">Top bar in, bottom bar out.</p>':'';
+
+  const tb=$('fType');
+  tb.innerHTML=`<button class="${flowType==='in'?'on':''}" onclick="setFlow('in')">Came in</button>
+    <button class="out ${flowType==='out'?'on':''}" onclick="setFlow('out')">Went out</button>`;
+  const sel=$('fCat');
+  sel.innerHTML=CATS[flowType].map(c=>`<option>${c}</option>`).join('');
+
+  $('fList').innerHTML=[...S.money].sort(byDateDesc).slice(0,14).map(m=>
+    `<li><span class="when">${pretty(m.date)}</span>
+      <div class="body"><h4 class="${m.cat==='Sadaqah'?'sadaqah':''}">${m.type==='in'?'+':'−'} ${money(m.amount)}</h4>
+      <p>${esc([m.what,m.cat].filter(Boolean).join(' · '))}</p></div>
+      <button class="x" onclick="delItem('money','${m.id}')">✕</button></li>`).join('')
+    ||'<li class="empty">Nothing recorded yet.</li>';
+
+  $('pots').innerHTML=S.pots.length?S.pots.map(p=>{
+    const pct=p.target?Math.min(100,p.saved/p.target*100):0;
+    return `<div class="card pot">
+      <div class="top"><h4>${esc(p.name)}</h4>
+        <span class="fig">${money(p.saved)}${p.target?' / '+money(p.target):''}</span></div>
+      ${p.target?`<div class="bar" style="margin-top:10px"><i style="width:${pct}%"></i></div>`:''}
+      <div style="display:flex;gap:10px;margin-top:12px;align-items:center">
+        <button class="btn soft" onclick="feedPot('${p.id}')">Add to it</button>
+        ${p.target&&p.saved<p.target?`<span class="note">${money(p.target-p.saved)} to go</span>`:''}
+        ${p.target&&p.saved>=p.target?'<span class="badge">reached</span>':''}
+        <button class="x" style="margin-left:auto" onclick="delItem('pots','${p.id}')">✕</button>
+      </div></div>`;
+  }).join(''):'<p class="empty" style="margin-top:14px">No pots yet. Even a small one works.</p>';
+}
+
+/* ============================================================
+   DEEN
+   ============================================================ */
+const DEEN_FIELDS=['dua','grateful','asking','improve','taught','surah','ayah','reflect'];
+function renderDeen(){
+  const d=D();
+  const goal=S.profile.istighfar||10000;
+  const n=d.istighfar||0;
+  $('istRing').innerHTML=ring(n/goal,88).replace('class="ring"','class="ring" style="--rose:var(--gold)"');
+  $('istCount').innerHTML=`${n.toLocaleString()} <span style="color:var(--muted);font-size:15px">/ ${goal.toLocaleString()}</span>`;
+  $('istLeft').textContent = n>=goal ? 'Complete for today.' : `${(goal-n).toLocaleString()} to go`;
+  const b=$('istBtns');b.innerHTML='';
+  [[33,'+33'],[100,'+100'],[500,'+500'],[1000,'+1000'],[-100,'−100']].forEach(([v,l])=>{
+    const x=document.createElement('button');
+    x.className='chk gold';x.textContent=l;
+    x.onclick=()=>{d.istighfar=Math.max(0,(d.istighfar||0)+v);save();renderDeen();};
+    b.appendChild(x);
+  });
+  const reset=document.createElement('button');
+  reset.className='btn quiet';reset.textContent='reset today';
+  reset.onclick=()=>{d.istighfar=0;save();renderDeen();};
+  b.appendChild(reset);
+  $('istWord').textContent = n>=goal ? 'Ma sha Allah. 🤍'
+    : n>0 ? 'Counted so far today. Add as you go — it doesn\'t have to be in one sitting.'
+    : 'Tap as you go through the day. Whatever you manage still counts.';
+
+  const pbox=$('prayers');pbox.innerHTML='';
+  Object.keys(d.prayers).forEach(k=>{
+    const x=document.createElement('button');
+    x.className='chk gold'+(d.prayers[k]?' on':'');
+    x.innerHTML=`<i></i>${k}`;
+    x.onclick=()=>{d.prayers[k]=!d.prayers[k];save();render();};
+    pbox.appendChild(x);
+  });
+  const ex=$('extras');ex.innerHTML='';
+  [['tahajjud','Tahajjud'],['waqiah','Surah Al-Waqi\'ah'],['quran','Quran'],['dhikr','Dhikr']].forEach(([k,l])=>{
+    const x=document.createElement('button');
+    x.className='chk gold'+(d[k]?' on':'');
+    x.innerHTML=`<i></i>${l}`;
+    x.onclick=()=>{d[k]=!d[k];save();render();};
+    ex.appendChild(x);
+  });
+  renderDuas();
+  DEEN_FIELDS.forEach(f=>{const el=$('d_'+f);if(el&&el!==document.activeElement)el.value=d.deen[f]||'';});
+
+  const past=Object.keys(S.days).filter(k=>k!==TODAY&&(S.days[k].deen.dua||S.days[k].deen.grateful||S.days[k].deen.surah))
+    .sort().reverse().slice(0,10);
+  $('deenList').innerHTML=past.map(k=>{
+    const e=S.days[k].deen;
+    const bits=[e.dua&&'Dua: '+e.dua,e.grateful&&'Grateful: '+e.grateful,e.surah&&'Quran: '+e.surah+(e.ayah?' '+e.ayah:'')].filter(Boolean);
+    return `<li><span class="when">${pretty(k)}</span><div class="body"><p>${esc(bits.join('\n'))}</p></div></li>`;
+  }).join('')||'<li class="empty">Your reflections will gather here.</li>';
+}
+
+/* ============================================================
+   JOURNAL
+   ============================================================ */
+const PROMPTS=['What am I feeling today?','What am I proud of?','What was difficult?','What did I learn?',
+  'What am I grateful for?','What do I need to let go of?','What would the woman I\'m becoming do?',
+  'What do I want tomorrow to look like?'];
+const MOODS=['😄','😊','😐','😔','😭','😴'];
+let mood='', promptIx=Math.floor(Math.random()*PROMPTS.length);
+function rollPrompt(){promptIx=(promptIx+1)%PROMPTS.length;$('prompt').textContent=PROMPTS[promptIx];}
+function renderJournal(){
+  renderLetter();renderMonths();
+  $('prompt').textContent=PROMPTS[promptIx];
+  const m=$('moods');m.innerHTML='';
+  MOODS.forEach(x=>{
+    const b=document.createElement('button');
+    b.className='mood'+(mood===x?' on':'');b.textContent=x;
+    b.onclick=()=>{mood=(mood===x?'':x);renderJournal();};
+    m.appendChild(b);
+  });
+  $('jList').innerHTML=[...S.journal].sort(byDateDesc).map(j=>
+    `<li><span class="when">${pretty(j.date)}<br>${j.mood||''}</span>
+      <div class="body"><h4>${esc(j.prompt||'')}</h4><p>${esc(j.text)}</p></div>
+      <button class="x" onclick="delItem('journal','${j.id}')">✕</button></li>`).join('')
+    ||'<li class="empty">The first page is always the hardest. Write one line.</li>';
+}
+function addJournal(){
+  const text=$('jText').value.trim();
+  if(!text){toast('Write something first, even a line.');return;}
+  S.journal.push({id:uid(),date:$('jDate').value||TODAY,mood,prompt:PROMPTS[promptIx],text});
+  $('jText').value='';mood='';commit();render();toast('Saved. 🤍');
+}
+
+/* ============================================================
+   JOYS
+   ============================================================ */
+function addJoy(){
+  const text=$('joyText').value.trim();
+  if(!text){toast('What made you smile?');return;}
+  S.joys.push({id:uid(),date:$('joyDate').value||TODAY,text});
+  $('joyText').value='';commit();render();toast('Kept. 🌸');
+}
+function renderJoys(){
+  const byMonth={};
+  [...S.joys].sort(byDateDesc).forEach(j=>{
+    const k=new Date(j.date+'T00:00:00').toLocaleDateString(undefined,{month:'long',year:'numeric'});
+    (byMonth[k]=byMonth[k]||[]).push(j);
+  });
+  const keys=Object.keys(byMonth);
+  $('joyBox').innerHTML=keys.length? keys.map(k=>
+    `<section class="block" style="margin-top:26px"><p class="eyebrow">${k}</p>
+      <div class="card"><ul class="list">${byMonth[k].map(j=>
+        `<li><span class="when">${pretty(j.date)}</span><div class="body"><p class="serifline">${esc(j.text)}</p></div>
+         <button class="x" onclick="delItem('joys','${j.id}')">✕</button></li>`).join('')}</ul></div></section>`).join('')
+    : '<p class="empty" style="margin-top:20px">Empty for now. Tomorrow something small will happen — put it here.</p>';
+}
+
+/* ============================================================
+   THEMES
+   ============================================================ */
+const THEMES=[
+  {k:'',      n:'Blush',   c:['#F7F1F1','#B87C8C','#EDD9DC','#8FA88C','#BC9C54']},
+  {k:'mocha', n:'Mocha',   c:['#F5EFE7','#9C6B45','#EBDBC7','#87895F','#B98B4A']},
+  {k:'cocoa', n:'Cocoa',   c:['#241C18','#D8A87E','#45352A','#A3B08A','#D9B36A']},
+  {k:'olive', n:'Olive',   c:['#F2EFE6','#6B7A50','#E0E5D2','#9FAF7F','#BC9C54']},
+  {k:'blue',  n:'Blue hour',c:['#EFF2F8','#5A76A8','#DBE3F2','#7FA095','#AC8B4C']},
+  {k:'nile',  n:'Nile',    c:['#EEF3F1','#2F6B6A','#D4E5E1','#7FA68C','#B08D45']},
+  {k:'night', n:'Nightfall',c:['#1F1A21','#D3A0B0','#453849','#9BB59A','#D6B368']}
+];
+function applyTheme(){
+  const t=S.profile.theme||'';
+  if(t)document.documentElement.setAttribute('data-theme',t);
+  else document.documentElement.removeAttribute('data-theme');
+}
+function setTheme(k){S.profile.theme=k;commit();applyTheme();renderSettings();}
+function renderThemes(){
+  $('themes').innerHTML=THEMES.map(t=>
+    `<button class="swatch ${(S.profile.theme||'')===t.k?'on':''}" onclick="setTheme('${t.k}')">
+      <span class="strip">${t.c.map(c=>`<i style="background:${c}"></i>`).join('')}</span>
+      <span class="nm">${t.n}</span>${(S.profile.theme||'')===t.k?'<br><span class="cur">in use</span>':''}
+    </button>`).join('');
+}
+
+/* ============================================================
+   SETTINGS / DATA
+   ============================================================ */
+function renderSettings(){
+  renderThemes();
+  const p=S.profile;
+  const set=(id,v)=>{const e=$(id);if(e!==document.activeElement)e.value=v??'';};
+  set('pName',p.name);set('pStart',p.start);set('pSW',p.startWeight);set('pGW',p.goalWeight);
+  set('pWhy',p.why);set('pWake',p.wake);set('pWater',p.water);set('pSleep',p.sleep);set('pIst',p.istighfar);set('pCur',p.cur);
+  let bytes=0;try{bytes=(localStorage.getItem(KEY)||'').length;}catch(e){}
+  const kb=(bytes/1024).toFixed(0);
+  const photos=S.photos.body.length+S.photos.skin.length;
+  const n=(x,w,p)=>`${x} ${x===1?w:(p||w+'s')}`;
+  $('storeUse').textContent=`${kb} KB used · ${n(photos,'photo')} · ${n(S.journal.length,'journal entry','journal entries')} · ${n(S.joys.length,'joy')}`;
+}
+function exportData(){
+  const b=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(b);a.download=`becoming-backup-${TODAY}.json`;a.click();
+  URL.revokeObjectURL(a.href);toast('Downloaded.');
+}
+function importData(input){
+  const f=input.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=e=>{
+    try{
+      const d=JSON.parse(e.target.result);
+      if(!d.profile)throw 0;
+      if(!confirm('This replaces everything currently saved here. Continue?'))return;
+      S=Object.assign(blank(),d);commit();applyTheme();render();toast('Imported.');
+    }catch(err){toast('That file could not be read.');}
+  };
+  r.readAsText(f);input.value='';
+}
+function clearAll(){
+  if(!confirm('Delete everything — habits, journal, photos, all of it?'))return;
+  if(prompt('Type CLEAR to confirm.')!=='CLEAR'){toast('Nothing was deleted.');return;}
+  S=blank();commit();applyTheme();render();toast('Cleared.');
+}
+function delItem(key,id,field){
+  if(!confirm('Delete this?'))return;
+  S[key]=S[key].filter(x=>(field?x[field]:x.id)!==id);commit();render();
+}
+
+/* ============================================================
+   DUAS ANSWERED
+   ============================================================ */
+function addDua(){
+  const text=$('duaText').value.trim();
+  if(!text){toast('What are you asking for?');return;}
+  S.duas.push({id:uid(),date:TODAY,text,answered:false,answeredDate:''});
+  $('duaText').value='';commit();renderDeen();toast('Added. 🤲');
+}
+function answerDua(id){
+  const q=S.duas.find(x=>x.id===id);if(!q)return;
+  q.answered=!q.answered;q.answeredDate=q.answered?TODAY:'';
+  commit();renderDeen();if(q.answered)toast('Alhamdulillah. 🤍');
+}
+function renderDuas(){
+  const open=S.duas.filter(q=>!q.answered).sort(byDateDesc);
+  const done=S.duas.filter(q=>q.answered).sort((a,b)=>a.answeredDate<b.answeredDate?1:-1);
+  $('duaOpen').innerHTML=open.map(q=>
+    `<li><span class="when">${pretty(q.date)}</span>
+      <div class="body"><p class="serifline" style="color:var(--ink)">${esc(q.text)}</p></div>
+      <button class="btn quiet" style="flex:0 0 auto" onclick="answerDua('${q.id}')">answered</button>
+      <button class="x" onclick="delItem('duas','${q.id}')">✕</button></li>`).join('')
+    ||'<li class="empty">Nothing written yet.</li>';
+  $('duaDone').innerHTML=done.map(q=>
+    `<li class="answered"><span class="when">${pretty(q.answeredDate)}</span>
+      <div class="body"><p class="serifline" style="color:var(--ink)">${esc(q.text)}</p>
+      <p style="font-size:13px">asked ${pretty(q.date)}<span class="badge">answered</span></p></div>
+      <button class="btn quiet" style="flex:0 0 auto" onclick="answerDua('${q.id}')">undo</button></li>`).join('')
+    ||'<li class="empty">This is the list you\'ll reread in December.</li>';
+}
+
+/* ============================================================
+   THE SEALED LETTER
+   ============================================================ */
+function renderLetter(){
+  const L=S.letter, box=$('letterBox');
+  const openable = TODAY>=END || L.opened;
+  if(!L.sealed){
+    box.innerHTML=`<div class="card">
+      <p class="note mb">Write it once, now, at the beginning. It stays sealed until 31 December — then it will be the first thing you read.</p>
+      <textarea id="lettTxt" class="big" placeholder="Dear me,"></textarea>
+      <button class="btn" style="margin-top:12px" onclick="sealLetter()">Seal until 31 December</button></div>`;
+    $('lettTxt').value=L.text||'';
+    $('lettTxt').addEventListener('input',e=>{S.letter.text=e.target.value;save();});
+  } else if(!openable){
+    box.innerHTML=`<div class="seal"><div class="wax">🤍</div>
+      <h3>Sealed</h3>
+      <p class="note">Written ${longDate(L.date)}. It opens on 31 December.</p>
+      <button class="btn quiet" onclick="openLetter()">open it early</button></div>`;
+  } else {
+    box.innerHTML=`<div class="card">
+      <p class="note mb">Written ${longDate(L.date)} — by the woman who was just starting.</p>
+      <p class="serifline" style="white-space:pre-wrap">${esc(L.text)}</p></div>`;
+  }
+}
+function sealLetter(){
+  const t=($('lettTxt').value||'').trim();
+  if(!t){toast('Write it first. Even a few lines.');return;}
+  if(!confirm('Seal this until 31 December?'))return;
+  S.letter={text:t,sealed:true,date:TODAY,opened:false};commit();renderJournal();toast('Sealed. 🤍');
+}
+function openLetter(){
+  if(!confirm('It was meant for 31 December. Open it now anyway?'))return;
+  S.letter.opened=true;commit();renderJournal();
+}
+
+/* ============================================================
+   MONTH CLOSE
+   ============================================================ */
+const MONTHS=['2026-09','2026-10','2026-11','2026-12'];
+function monthName(m){return new Date(m+'-01T00:00:00').toLocaleDateString(undefined,{month:'long',year:'numeric'});}
+function prevMonth(){const d=new Date();d.setDate(0);return iso(d).slice(0,7);}
+function closeMonth(){
+  const m=$('cMonth').value;
+  const rec={id:uid(),month:m,word:$('cWord').value,changed:$('cChanged').value,
+    best:$('cBest').value,hard:$('cHard').value};
+  if(!rec.changed.trim()&&!rec.best.trim()&&!rec.hard.trim()){toast('Write at least one line.');return;}
+  S.months=S.months.filter(x=>x.month!==m);S.months.push(rec);
+  ['cWord','cChanged','cBest','cHard'].forEach(i=>$(i).value='');
+  commit();renderJournal();toast('Month closed. 🌙');
+}
+function renderMonths(){
+  const sel=$('cMonth');
+  if(!sel.options.length){
+    sel.innerHTML=MONTHS.map(m=>`<option value="${m}">${monthName(m)}</option>`).join('');
+    const pv=prevMonth();sel.value=MONTHS.includes(pv)?pv:MONTHS[0];
+  }
+  $('monthList').innerHTML=[...S.months].sort((a,b)=>a.month<b.month?1:-1).map(m=>
+    `<div class="card" style="margin-top:12px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+        <h3 style="font-size:20px">${monthName(m.month)}${m.word?` — <span style="color:var(--rose)">${esc(m.word)}</span>`:''}</h3>
+        <button class="x" onclick="delItem('months','${m.id}')">✕</button></div>
+      ${m.changed?`<p style="white-space:pre-wrap;margin:10px 0 0">${esc(m.changed)}</p>`:''}
+      ${m.best?`<p class="note" style="margin-top:10px">Best day — ${esc(m.best)}</p>`:''}
+      ${m.hard?`<p class="note">Hardest day — ${esc(m.hard)}</p>`:''}
+    </div>`).join('');
+}
+
+/* ============================================================
+   THE BOOK
+   ============================================================ */
+function openBook(){
+  const p=S.profile, start=p.start||'2026-09-01';
+  const num=(b,l)=>`<div><b>${b}</b><span>${l}</span></div>`;
+  const mins=S.learning.reduce((a,l)=>a+(+l.minutes||0),0);
+  const ist=Object.values(S.days).reduce((a,d)=>a+(+d.istighfar||0),0);
+  const w=S.weights, chg=(w.length&&p.startWeight)?(p.startWeight-w[w.length-1].kg):null;
+  const written=Object.keys(S.days).filter(k=>S.days[k].intention||S.days[k].joy).length;
+
+  const sec=(t,inner,note)=>inner?`<h2>${t}</h2>${note?`<p class="note">${note}</p>`:''}${inner}`:'';
+  const entries=a=>a.map(x=>`<div class="entry"><div class="when">${x.w}</div>${x.h?`<h4 style="font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:18px;margin:4px 0 0">${x.h}</h4>`:''}${x.p?`<p>${x.p}</p>`:''}</div>`).join('');
+  const shots=a=>a.length?`<div class="bookgrid">${a.map(x=>`<figure><img src="${x.data}" alt=""><figcaption>${pretty(x.date)} · ${x.cat||''}</figcaption></figure>`).join('')}</div>`:'';
+
+  $('bookPage').innerHTML=`
+   <div class="bookcover">
+     <div class="ar">بِسْمِ اللهِ</div>
+     <h1>BECOMING</h1>
+     <p class="note" style="margin-top:14px">${esc(p.name||'')}${p.name?' · ':''}${longDate(start)} — 31 December 2026</p>
+   </div>
+
+   ${p.why?`<h2>Why I started</h2><p class="serifline" style="white-space:pre-wrap">${esc(p.why)}</p>`:''}
+
+   <h2>By the numbers</h2>
+   <div class="numbers">
+     ${num(S.journal.length,'journal entries')}
+     ${num(S.joys.length,'little joys')}
+     ${num(S.workouts.length,'times I moved')}
+     ${num(Math.floor(mins/60)+'h','studied')}
+     ${num(S.recipes.length,'recipes tried')}
+     ${num(ist.toLocaleString(),'istighfar')}
+     ${num(S.photos.body.length+S.photos.skin.length,'photos')}
+     ${chg!=null?num((chg>=0?'-':'+')+Math.abs(chg).toFixed(1)+'kg','body change'):''}
+     ${num(overallPct()+'%','consistency')}
+   </div>
+
+   ${sec('The months',[...S.months].sort((a,b)=>a.month<b.month?-1:1).map(m=>
+     `<div class="entry"><div class="when">${monthName(m.month)}${m.word?' — '+esc(m.word):''}</div>
+      ${m.changed?`<p>${esc(m.changed)}</p>`:''}
+      ${m.best?`<p class="note">Best day — ${esc(m.best)}</p>`:''}
+      ${m.hard?`<p class="note">Hardest day — ${esc(m.hard)}</p>`:''}</div>`).join(''))}
+
+   ${sec('The journal',entries([...S.journal].sort((a,b)=>a.date<b.date?-1:1).map(j=>
+      ({w:longDate(j.date)+(j.mood?' · '+j.mood:''),h:esc(j.prompt||''),p:esc(j.text)}))))}
+
+   ${sec('Little joys',entries([...S.joys].sort((a,b)=>a.date<b.date?-1:1).map(j=>
+      ({w:longDate(j.date),p:esc(j.text)}))),'The part you would have forgotten.')}
+
+   ${sec('Duas answered',entries(S.duas.filter(q=>q.answered).sort((a,b)=>a.answeredDate<b.answeredDate?-1:1).map(q=>
+      ({w:'asked '+pretty(q.date)+' · answered '+pretty(q.answeredDate),p:esc(q.text)}))))}
+
+   ${(S.money.length||S.pots.length)?`<h2>The money</h2>
+     <div class="numbers">
+       ${num(money(S.money.filter(m=>m.type==='in').reduce((a,b)=>a+(+b.amount||0),0)),'came in')}
+       ${num(money(S.money.filter(m=>m.type==='in').reduce((a,b)=>a+(+b.amount||0),0)-S.money.filter(m=>m.type==='out').reduce((a,b)=>a+(+b.amount||0),0)),'kept')}
+       ${num(money(S.money.filter(m=>m.cat==='Sadaqah').reduce((a,b)=>a+(+b.amount||0),0)),'given')}
+       ${num(money(S.pots.reduce((a,b)=>a+(+b.saved||0),0)),'saved into pots')}
+     </div>`:''}
+
+   ${sec('The kitchen',[...S.recipes].sort((a,b)=>a.date<b.date?-1:1).map(r=>
+      `<div class="entry"><div class="when">${pretty(r.date)}</div>
+       <h4 style="font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:18px;margin:4px 0 6px">${esc(r.name)}</h4>
+       ${r.note?`<p class="note" style="margin:0 0 8px">${esc(r.note)}</p>`:''}
+       ${r.photo?`<img src="${r.photo}" style="width:190px;border-radius:12px;display:block">`:''}</div>`).join(''))}
+
+   ${sec('The body',shots([...S.photos.body].sort((a,b)=>a.date<b.date?-1:1)))}
+   ${sec('The skin',shots([...S.photos.skin].sort((a,b)=>a.date<b.date?-1:1)))}
+
+   ${S.letter.text&&(TODAY>=END||S.letter.opened)?`<h2>The letter I sealed</h2>
+     <p class="note">Written ${longDate(S.letter.date)}</p>
+     <p class="serifline" style="white-space:pre-wrap">${esc(S.letter.text)}</p>`:''}
+
+   <h2 style="text-align:center">الْحَمْدُ لِلَّٰهِ</h2>
+   <p class="note" style="text-align:center">Four months. Every one of them yours.</p>`;
+
+  $('book').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeBook(){$('book').classList.remove('on');document.body.style.overflow='';}
+
+/* ============================================================
+   wiring
+   ============================================================ */
+function bindText(id,get,set){
+  const el=$(id);if(!el)return;
+  el.addEventListener('input',()=>{set(el.value);save();});
+}
+function setup(){
+  applyTheme();
+  buildNav();
+  ['wDate','mDate','kDate','bpDate','spDate','lDate','jDate','joyDate','rDate','fDate'].forEach(i=>{if($(i))$(i).value=TODAY;});
+
+  bindText('intention',null,v=>{D().intention=v;});
+  bindText('joyToday',null,v=>{
+    const d=D();d.joy=v;
+    const ex=S.joys.find(j=>j.date===TODAY&&j.auto);
+    if(v.trim()){ if(ex)ex.text=v; else S.joys.push({id:uid(),date:TODAY,text:v,auto:true}); }
+    else if(ex) S.joys=S.joys.filter(j=>j!==ex);
+  });
+  DEEN_FIELDS.forEach(f=>bindText('d_'+f,null,v=>{D().deen[f]=v;}));
+  ['Breakfast','Lunch','Dinner','Snacks'].forEach(m=>bindText('m_'+m,null,v=>{D().meals[m]=v;}));
+
+  const pmap={pName:'name',pStart:'start',pSW:'startWeight',pGW:'goalWeight',pWhy:'why',pWake:'wake',pWater:'water',pSleep:'sleep',pIst:'istighfar',pCur:'cur'};
+  Object.entries(pmap).forEach(([id,k])=>bindText(id,null,v=>{S.profile[k]=(k==='istighfar'||k==='water')?(+v||0):v;}));
+
+  if(memoryOnly){
+    $('storeWarn').innerHTML='<div class="banner">This preview can\'t save to the browser. Download the file and open it from your device — then everything sticks.</div>';
+  }
+  const h=location.hash.replace('#','');
+  go(VIEWS.some(v=>v[0]===h)?h:'today');
+}
+function render(){
+  if(current==='today')renderToday();
+  else if(current==='habits')renderHabits();
+  else if(current==='body')renderBody();
+  else if(current==='food')renderFood();
+  else if(current==='skin')renderSkin();
+  else if(current==='career')renderCareer();
+  else if(current==='money')renderMoney();
+  else if(current==='deen')renderDeen();
+  else if(current==='journal')renderJournal();
+  else if(current==='joys')renderJoys();
+  else if(current==='settings')renderSettings();
+}
+window.addEventListener('beforeunload',commit);
+setup();
+</script>
+</body>
+</html>
